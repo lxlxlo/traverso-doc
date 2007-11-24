@@ -45,23 +45,25 @@ Sometimes it is important to fine-tune the transition from one track to the next
  \label{fig_markers01}
 \end{figure}
 
-These triangles are CD track markers, and they can be moved, added, and deleted freely (press \sact{Q} on the timeline to list all available functions.) However, it is also possible to create setups which don't make sense. E.\,g. only having one track marker in the timeline. In such cases, Traverso tries to guess the most sensible solution, and adds markers on the fly at positions it considers appropriate (which is usually at position 00:00:00 and after the last sample of the sheet containing audio data). Traverso also supports CD-text, which can be entered in the marker dialogue ``Views $\rightarrow$ Marker Dialog'' (\FigB~\ref{fig_marker-editor}). It is also possible to export the table of contents of the CD as an HTML file from this dialog. Album-wide CD-text can be entered in the project settings, opened from ``Project $\rightarrow$ Project Manager'', in the tab ``CD Text''.
+These triangles are CD track markers, and they can be moved, added, and deleted freely (press \sact{Q} on the timeline to list all available functions.) However, it is also possible to create setups which don't make sense. E.\,g. only having one track marker in the timeline. In such cases, Traverso tries to guess the most sensible solution, and adds markers on the fly at positions it considers appropriate (which is usually at position 00:00:00 and after the last sample of the sheet containing audio data). Traverso also supports CD-text, which can be entered in the marker dialogue ``Sheet $\rightarrow$ Marker Editor\dots'' (\FigB~\ref{fig_marker-editor}). It is also possible to export the table of contents of the CD as an HTML file from this dialog. Album-wide CD-text can be entered in the project settings, opened from ``Project $\rightarrow$ Manage Project'', in the tab ``CD Text''.
 
 \begin{figure}[ht]
- \centering\includegraphics[width=0.45\textwidth]{images/marker-editor}
- \caption{The marker dialogue opened from ``Views $\rightarrow$ Marker Dialog'' allows to add CD-text, modify the markers, and export the table of contents as an HTML file.}
+ \centering\includegraphics[width=0.6\textwidth]{images/marker-editor}
+ \caption{The marker dialogue opened from ``Sheet $\rightarrow$ Marker Editor\dots'' allows to add CD-text, modify the markers, and export the table of contents as an HTML file.}
  \label{fig_marker-editor}
 \end{figure}
 
-Once the CD is laid out to your satisfaction, press \dact{RETURN} on the sheet to open the export dialogue (\FigB~\ref{fig_exportdlg}). You can either choose to export the project as audio files to the harddisk, or burn a CD. If you want to export to harddisk, you can choose between several audio formats. The most common one is WAVE, and depending on your plans with the exported files, you can use different sample formats (bit depths). 16 bit is ideal if you want to burn the files on CD later on. If you want to go on processing the files, use 32 bit float format instead. If you want to archive the files, use the FLAC codec, which is a lossless compression format.
+Once the CD is laid out to your satisfaction, press \sact{F8} or go to ``Project $\rightarrow$ CD writing\dots'' to open the CD writing dialogue (\FigB~\ref{fig_exportdlg}). Now you must decide if you want to burn the current sheet (using markers to define CD tracks), or the entire project (each sheet becomes a track). If you check ``Export to disk only'', no CD will be written, but only a *.toc file and *.wav files for \texttt{cdrdao}.
 
-If you want to burn a CD, you must also decide if you want to burn the current sheet (using markers to define CD tracks), or the entire project (each sheet becomes a track). If you check ``Export to disk only'', no CD will be written, but only a *.toc file and *.wav files for \texttt{cdrdao}.
+In order to export the sheet or project to the hard disk, press \sact{F9} or select ``Project $\rightarrow$ Export\dots'' from the menu. This opens another dialogue (\FigB~\ref{fig_exportdlg}), where you can select a file format and adjust various parameters. Traverso supports most of the common and popular file formats, including Wave, AIFF, FLAC, WavPack, Ogg Vorbis, and MP3. If one or more file formats are not available on your system, Traverso was probably compiled without support for it. Some distributors prefer not to include support for certain compressed formats due to legal reasons. In that case you either have to live with it, or you have to compile Traverso yourself with support for the required codec.
 
 Note for OS X users: CD writing support is still experimental. You can choose between several burning devices: IODVDServices, IODVDServices/2, IOCompactDiscServices, IOCompactDiscServices/2. These are hard-coded, so you probably don't have all of them installed. IOCompactDiscServices should only be used for old drives without DVD reading support. If you have multiple DVD drives, use IODVDServices or IODVDServices/2 to access the first and the second drive. In most cases IODVDServices will be the only working solution.
 
 \begin{figure}[t]
- \centering\includegraphics[width=\textwidth]{images/exportdlg}
- \caption{\dact{RETURN} opens a dialogue to export the project (either the current sheet or the entire project) to audio files, or burn a CD.}
+ \centering
+ \includegraphics[width=0.4\textwidth]{images/exportdlg}\qquad
+ \includegraphics[width=0.5\textwidth]{images/exportdlg1}
+ \caption{\sact{F8} opens a dialogue that allows to burn the current sheet or the entire project on a CD (left). \sact{F9} opens an export dialogue which writes the current sheet or the entire project to the hard disk (right).}
  \label{fig_exportdlg}
 \end{figure}
 

@@ -10,7 +10,7 @@ The precompiled binaries are available from the following locations:
 \end{description}
 
 \section{Compiling from Source}
-This section describes how to compile Traverso from source on a (K,X)Ubuntu \Ubuntu\ system. For other distributions, the package names may be somewhat different, but you should be able to identify the correct package with your distributions package manager. Note that Traverso depends on the Qt library version 4.2.3 or newer (4.3.1 recommended).
+This section describes how to compile Traverso from source on a (K,X)Ubuntu \Ubuntu\ system. For other distributions, the package names may be somewhat different, but you should be able to identify the correct package with your distributions package manager. Note that Traverso depends on the Qt library version 4.3.1 or newer.
 
 First you will need to make your system fit to compile Traverso. And while we're at it, install some more useful things. Use your favorite package manager (like synaptic or adept) to install the following packages:
 
@@ -21,9 +21,13 @@ First you will need to make your system fit to compile Traverso. And while we're
  \item libjack0.100.0-0, libjack0.100.0-dev
  \item libasound2, libasound2-dev
  \item fftw3, fftw3-dev
- \item jackd, qjackctl, gcc, g++, make
+ \item jackd, qjackctl, gcc, g++, make, cmake
  \item build-essential
- \item (optional: libslv2, libslv2-dev from \cite{trav-repo})
+ \item libwavpack1, libwavpack-dev *
+ \item liblame0, liblame-dev *
+ \item libogg0, libogg-dev, liboggflac3 *
+ \item libflac++-dev, libflac++6 *
+ \item libmad0-dev, libmad0 *
 \end{itemize}
 On (K,X)Ubuntu the following will get you going:
 \begin{verbatim}
@@ -31,9 +35,14 @@ $ sudo apt-get install build-essential libqt4-core \
  libqt4-gui libqt4-dev libsndfile1 libsndfile1-dev \
  libsamplerate0 libsamplerate0-dev libjack0.100.0-0 \
  libjack0.100.0-dev libasound2 libasound2-dev \
- fftw3 fftw3-dev jackd qjackctl gcc g++ make
+ libwavpack1 libwavpack-dev \
+ liblame0 liblame-dev \
+ libogg0 libogg-dev liboggflac3 \
+ libflac++-dev libflac++6 \
+ libmad0-dev libmad0 \
+ fftw3 fftw3-dev jackd qjackctl gcc g++ make cmake
 \end{verbatim}
-If some packages are not available, you should enable the universe repository. Instructions on how to add repositories are available for Kubuntu and Ubuntu on the distribution website and related forums / wikis.
+The packages marked with * are optional, but they will add support for compressed file formats such as Ogg/Vorbis, MP3, or FLAC. Thus if they are avalable for your platform, it is recommended to install them as well. If some packages are not available, you should enable the universe repository. Instructions on how to add repositories are available for Kubuntu and Ubuntu on the distribution website and related forums / wikis.
 
 In case you have version 3 of the Qt library installed (which is the default in (K,X)Ubuntu), you must make sure that the tools of version 4 are used. Open a terminal, enter the following commands and always select the Qt4 version when asked:
 
@@ -48,9 +57,11 @@ Now your system is ready to compile Traverso from source! Download the latest st
 \begin{verbatim}
 $ tar -zxvf traverso-x.x.x.tar.gz
 $ cd traverso-x.x.x
-$ ./cleancompile
+$ cmake .
+$ make -j 2
 \end{verbatim}
-(The cleancompile script ensures that all traces of previous compilations are removed, and calls qmake and make to start the new compilation.) This will take some time, and if you followed the instructions above carefully, it should run through without errors. When the make process has finished and you get back the  command line prompt, check the last 10 lines for the word ``Error''. If you don't find it, everything is ok. If you find it, check again if you followed the instructions above correctly. Now you can install the software by typing the following lines:
+
+This will take some time, and if you followed the instructions above carefully, it should run through without errors. When the make process has finished and you get back the  command line prompt, check the last 10 lines for the word ``Error''. If you don't find it, everything is ok. If you find it, check again if you followed the instructions above correctly. Now you can install the software by typing the following lines:
 
 \begin{verbatim}
 $ sudo make install
