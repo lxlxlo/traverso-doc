@@ -1,0 +1,36 @@
+\begin{itemize}
+ \item \textit{Abspielen läuft nicht flüssig und ich erhalte viele xruns}\\
+  Falls ein Onboard-Soundchip von Intel verwendet wird, muss man die Anzahl Perioden von 2 auf 3 erhöhen. Dies geschieht im Einstellungsdialog (,,Einstellungen $\rightarrow$ Einstellungen\dots''), in der Seite ,,Audio-Treiber''. Falls der jack Soundserver verwendet wird, erfolgt die Einstellung darin, zum Beispiel über das Programm qjackctl.
+
+ \item \textit{Ich höre nichts}\\
+  Wenn Traverso abspielt und die VUMeter ein Signal anzeigen, aber trotzdem nichts zu hören ist, überprüft ob der ,,Null-Treiber'' aktiv ist. Falls ja, ladet einen anderen Treiber (ALSA in Linux, PortAudio in OS X und Windows) und versucht es nochmal. Falls ihr jack verwendet, müsst ihr die Verbindungen manuell herstellen. Dies ist in Kapitel \ref{sect_setup} beschrieben.
+
+ \item \textit{Ich kann den Treiber nicht aktivieren}\\
+  Ein mögliches Problem ist eine zu gro"se Puffergrö"se für die Soundkarte. Reduziert die Latenzzeit in den Treibereinstellungen und versucht es nochmal. Es kann auch vorkommen, dass die Soundkarte von einer anderen Anwendung blockiert ist. Beendet alle anderen Audioanwendungen, und falls ihr KDE verwendet, stellt sicher, dass aRTs automatisch bei Nicht-Gebrauch beendet wird.
+
+ \item \textit{Meine Maus bewegt sich nicht sobald ich eine Taste drücke}\\
+  Auf einigen Systemen wird die Maus bei Tastaturaktivität deaktiviert. Dies soll unbeabsichtigte Aktionen durch Berührungen des Trackpads auf Laptops verhindern. Dadurch wird aber das ganze Konzept von Weicher Selektion verhindert. Unter Linux wird diese Funktion über den Daemon \texttt{mouseemu} gesteuert. Diesen kann man stoppen, indem man folgenden Befehl ausführt
+  \begin{verbatim}
+  sudo /etc/init.d/mouseemu stop
+  \end{verbatim}
+  oder durch abändern der Konfigurationsdatei  \texttt{/etc/defaults/mouseemu}. Der Wert in der Zeile \texttt{TYPING\_BLOCK=''-typing-block 300''} (hier ,,300'') muss dazu auf 0 gesetzt werden. Ist die Zeile durch ein Kommentarzeichen ,,\#'' deaktiviert, entfernt dieses. Dann startet den Daemon neu durch Eingabe von
+ \begin{verbatim}
+  sudo /etc/init.d/mouseemu restart
+  \end{verbatim}
+
+  Auf OS X könnt ihr in den Systemeinstellungen die Funktion ,,Ignoriere versehentliche Trackpad-Eingaben'' deaktivieren.
+
+ \item \textit{Der Audio-Thread kann keine Echtzeit-Priorität erlangen}\\
+Auf einigen Linux-Distributionen ist es nicht erlaubt, den Audio-Thread mit Echtzeit-Priorität laufen zu lassen. Dies kann zu Problemen beim Abspielen und Aufnehmen führen, die sich in der Form von Aussetzern oder xruns äu"sern. Mit folgenden Änderungen in der Datei \texttt{/etc/security/limits.conf} können die Einstellungen entsprechend angepasst werden. Sollten die unten stehenden Zeilen schon vorhanden sein, ändert nur die Nummern in der letzten Spalte. Sind sie noch nicht vorhanden, fügt diese Zeilen ein:
+
+\begin{tabular}{llll}
+\texttt{@audio} & \texttt{-} & \texttt{rtprio} & \texttt{90}\\
+\texttt{@audio} & \texttt{-} & \texttt{nice} & \texttt{-10}\\
+\texttt{@audio} & \texttt{-} & \texttt{memlock} & \texttt{3000000}\\
+\end{tabular}
+
+Danach muss der Computer neu gestartet werden.
+
+\end{itemize}
+
+

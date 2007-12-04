@@ -1,0 +1,67 @@
+Eine einfache Art Traverso zu installieren ist die Verwendung eines bereitgestellten Installationspakets. Für Traverso \Version\ existieren Binärpakete für einige populäre Linux-Distributionen, sowie Apple OS X auf Intel- und PPC-Architekturen. In der schnelllebigen Opensource-Welt ist es jedoch am einfachsten, sich auf der Traverso-Webseite \cite{trav-hp} über die aktuelle Situation im Bezug auf Installationsmöglichkeiten zu informieren. Alternativ kann man sich das Programm auch aus dem Quellcode kompilieren. Dieser Vorgang wird hier im Detail beschrieben. Traverso wurde erfolgreich auf den Plattformen i586, ia64 und PPC (Linux und OS X) getestet.
+
+\section{Binärpakte}
+Vorkompilierte Binärpakete erhält man im Allgemeinen von folgenden Quellen:
+
+\begin{description}
+	\item [(K)Ubuntu:] Auf der Download-Seite der Traverso-Webseite \cite{trav-hp} werden Binärpakete für Debian-Derivate bereitgestellt.
+	\item [Gentoo:] Traverso ist Teil der offiziellen Distribution. Neue Versionen erscheinen zuerst im Pro-Audio Overlay. Aktuelle Informationen erhält man auf \cite{pro-audio-wiki}.
+	\item [SuSE:] Pakete sind auf \cite{suse-ref} erhältlich.
+\end{description}
+
+\section{Quellcode kompilieren}
+Dieser Abschnitt beschreibt die Übersetzung des Traverso-Quellcodes auf einem (K,X)Ubuntu \Ubuntu\ System. Die Paketnamen können für andere Distributionen etwas abweichen, generell sollte die Anleitung aber leich anzupassen sein. Traverso hängt von der Qt-Bibliothek Version 4.3.1 oder neuer ab.
+
+Zunächst muss das System für die Übersetzung des Quellcodes eingerichtet werden. Wenn wir schon dabei sind, installieren wir noch einige andere nützliche Dinge. Startet also den Paketmanager der Distribution (z.\,B. Synaptic oder Adept) und installiert folgende Pakete:
+
+\begin{itemize}
+ \item libqt4-core, libqt4-gui, libqt4-dev
+ \item libsndfile1, libsndfile1-dev
+ \item libsamplerate0, libsamplerate0-dev
+ \item libjack0.100.0-0, libjack0.100.0-dev
+ \item libasound2, libasound2-dev
+ \item libvorbis, libvorbis-dev, libmad0, libmad0-dev
+ \item libwavpack, libwavpack-dev, librdf0, librdf0-dev
+ \item libflac++, libflac++-dev, fftw3, fftw3-dev
+ \item jackd, qjackctl, gcc, g++, make, cmake
+ \item build-essential
+ \item libwavpack1, libwavpack-dev, librdf0, librdf0-dev
+ \item liblame0$^\bigstar$, liblame-dev$^\bigstar$
+ \item libogg0$^\bigstar$, libogg-dev$^\bigstar$
+ \item libflac++-dev$^\bigstar$, libflac++6$^\bigstar$
+ \item libmad0-dev$^\bigstar$, libmad0$^\bigstar$
+\end{itemize}
+Auf (K,X)Ubuntu kann auch der folgende Befehl auf einem Terminal eingegeben werden:
+\begin{verbatim}
+$ sudo apt-get install build-essential libqt4-core \
+ libqt4-gui libqt4-dev libsndfile1 libsndfile1-dev \
+ libsamplerate0 libsamplerate0-dev libjack0.100.0-0 \
+ libjack0.100.0-dev libasound2 libasound2-dev \
+ libwavpack1 libwavpack-dev librdf0 librdf0-dev \
+ liblame0 liblame-dev \
+ libogg0 libogg-dev \
+ libflac++-dev libflac++6 \
+ libmad0-dev libmad0 \
+ fftw3 fftw3-dev jackd qjackctl gcc g++ make cmake
+\end{verbatim}
+
+Pakete, die mit $^\bigstar$ markiert sind, sind optional, erweitern aber Traverso um die Unterstützung von komprimierten Dateiformaten wie Ogg/Vorbis, MP3, oder FLAC. Falls sie für die jeweilige Plattform verfügbar sind, empfiehlt es sich auf jeden Fall, sie zu installieren. Für einige Pakete sind evtl. die Universe und Multiverse-Repositorien erforderlich. Weitere Informationen dazu findet man auf den (K,X)Ubuntu-Webseiten, Foren und Wikis.
+
+Falls auf dem gleichen System noch die Qt-Bibliotheken in Version 3 installiert sind, muss eingerichtet werden, dass im folgenden Version 4 verwendet werden soll. Dazu gibt man die folgenden Befehle auf einem Terminal ein, und wählt jeweils die Qt4-Variante aus wenn man gefragt wird:
+
+\begin{verbatim}
+$ sudo update-alternatives --config qmake
+$ sudo update-alternatives --config moc
+$ sudo update-alternatives --config uic
+\end{verbatim}
+
+Nun sollte das System in der Lage sein, Traverso zu kompilieren. Ladet euch dazu das aktuelle Quellcode-Archiv von der Traverso-Webseite, und speichert es in eurem Home-Verzeichnis, z.\,B. in /home/deinName/traversosource/. Entpackt und kompiliert wird es mit folgenden Befehlen:
+
+\begin{verbatim}
+$ tar -zxvf traverso-x.x.x.tar.gz
+$ cd traverso-x.x.x
+$ cmake .
+$ make -j 2
+\end{verbatim}
+
+Dies dauert einige Zeit, und falls das System korrekt eingerichtet wurde, sollte die Übersetzung ohne Fehler durchlaufen. Startet Traverso durch die Eingabe von \texttt{bin/traverso}. Falls das Programm nicht startet, überprüft nochmal ob ihr der Anleitung oben exakt gefolgt seid.

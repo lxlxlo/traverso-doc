@@ -1,0 +1,149 @@
+%----------------------------------------------------
+%
+% Title:  Traverso
+% Author: Remon Sijrier, Nicola Doebelin
+% Date:   Januar 13, 2007
+%
+%----------------------------------------------------
+% Created with TeXwiz 2.0.0
+%----------------------------------------------------
+
+\documentclass[a4paper,
+               12pt,
+               pdftex,
+               twoside,
+               smallheadings,
+               headsepline,
+               headinclude,
+               DIV16,
+               BCOR10mm
+               ]{scrreprt}
+
+\usepackage{mathpazo}
+\usepackage[scaled=.95]{helvet}
+\usepackage{courier}
+\linespread{1.05}
+\usepackage{ucs}
+\usepackage[utf8]{inputenc}
+\usepackage{ngerman}
+\usepackage{calc}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{pdfpages}
+
+%---------------- Page style options ----------------
+
+\usepackage[automark]{scrpage2}
+\pagestyle{scrheadings}
+
+\setcapindent{1em}
+
+%-------------- Custom Markup Commands --------------
+
+\newcommand*{\FigB}{Abb.}      % "fig." as used in brackets
+\newcommand*{\FigT}{Abbildung}    % "figure" as used in running text
+\newcommand*{\FigsT}{Abbildungen}  % "figures" (plural) in running text
+\newcommand*{\TabB}{Tab.}      % "tab." as used in brackets
+\newcommand*{\TabT}{Tabelle}     % "table" as used in running text
+\newcommand*{\TabsT}{Tabellen}   % "tables" (plural) used in running text
+
+\newcommand*{\sact}[1]{$<$#1$>$} % single click action
+\newcommand*{\dact}[1]{$\ll$#1$\gg$} % double click action
+\newcommand*{\hact}[1]{{[#1]}} % single hold action
+
+\newcommand*{\Version}{0.42.0} % The current version of traverso
+\newcommand*{\Ubuntu}{7.10 Gutsy Gibbon} % The current Ubuntu version
+
+%---------------- PDF output options ----------------
+
+\pdfoutput=1
+\usepackage{thumbpdf}
+\usepackage[bookmarks]{hyperref}
+\pdfimageresolution=300
+\pdfcompresslevel=9
+
+\pdfinfo{
+/Title(Traverso 0.42.0)
+/Creator(TeX)
+/Producer(PdfTeX)
+/Author(Nicola Doebelin)
+/CreationDate(D:20070113145749)
+/Subject(Traverso 0.42.0)}
+
+%----------------------------------------------------
+
+\renewcommand{\floatpagefraction}{0.6}
+\renewcommand{\dblfloatpagefraction}{0.6}
+\newcommand{\clearemptydoublepage}{\newpage\pagestyle{empty}\cleardoublepage}
+
+% sloppy wordspacing:
+\tolerance 1414
+\hbadness 1414
+\emergencystretch 1.5em
+\hfuzz 0.3pt
+\widowpenalty=10000
+\vfuzz \hfuzz
+\raggedbottom
+
+\begin{document}
+
+
+\title{Traverso 0.42.0}
+\author{Digital Audio Workstation}
+\date{\today}
+%----------------- Custom title page ----------------
+
+\begin{titlepage}
+  \includepdf{titlepage.pdf}
+\end{titlepage}
+  \clearemptydoublepage
+  \includepdf{titlepage-author.pdf}
+
+\input{license}
+
+\tableofcontents
+
+%--------------- Start of the document --------------
+
+\chapter{Einführung\label{sect_introduction}}
+\input{intro}
+\chapter{Installation\label{sect_installation}}
+\input{installation}
+\chapter{Tastaturbefehle\label{sect_keyactions}}
+\input{keyactions}
+\chapter{Einrichten\label{sect_setup}}
+\input{setup}
+\chapter{Erste Schritte\label{sect_quickstart}}
+\input{quickstart}
+\chapter{Aufnahme\label{sect_recording}}
+\input{recording}
+\chapter{Bearbeitung\label{sect_mixing}}
+\input{mixing}
+\chapter{Eine CD erstellen\label{sect_cdburning}}
+\input{cdburning}
+\chapter{Werkzeuge\label{sect_tools}}
+\input{tools}
+\chapter{Hilfestellung\label{sect_help}}
+\input{help}
+\chapter{Häufige Probleme}
+\input{trouble}
+%\appendix
+%---------------- End of the document ---------------
+
+\begin{thebibliography}{xx}
+   \bibitem{trav-hp}http://www.traverso-daw.org
+   \bibitem{trav-repo}deb http://www.traverso-daw.org binary-i386/
+   \bibitem{pro-audio-wiki}http://proaudio.tuxfamily.org/wiki/
+   \bibitem{suse-ref}http://packman.links2linux.org/package/traverso
+   \bibitem{macports}http://www.apple.com/downloads/macosx/unix\_open\_source/macports.html
+%   \bibitem{savannah-ref}http://savannah.nongnu.org/projects/traverso/
+   \bibitem{ml-archive}http://lists.gnu.org/archive/html/traverso-devel/
+   \bibitem{support}http://savannah.nongnu.org/support/?group=traverso
+   \bibitem{bugtracker}http://savannah.nongnu.org/bugs/?group=traverso
+   \bibitem{sox}http://sox.sourceforge.net
+   \bibitem{forum}http://www.traverso-daw.org/forum/index.php
+\end{thebibliography}
+
+\end{document}
