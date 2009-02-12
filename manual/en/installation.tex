@@ -1,58 +1,51 @@
-The most convenient way to install Traverso is to use one of the available installers. For Traverso \Version\ binary packages are available for several popular Linux distributions. However, in the fast-living open source world, things can change rapidly. It is thus recommended to refer to the Traverso homepage \cite{trav-hp} in order to find up-to-date information on binary packages. Alternatively, compilation from source is the second best option, and explained here in detail. It's actually quite simple as you will see! Traverso successfully builds and runs on i386, ia64, and ppc platforms.
+The most convenient way to install Traverso is to use one of the available installers. For stable versions of Traverso binary packages are available for several popular Linux distributions. However, in the fast-living open source world things can change rapidly. It is thus recommended to refer to the Traverso homepage \cite{trav-hp} to find up-to-date information on binary packages. If no binary packages are available, Traverso can be compiled from the source code. The dependencies are part of most linux distributions, which makes the compilation relatively simple. Traverso successfully builds and runs on i386, ia64, and ppc platforms.
 
 \section{Binaries}
 The precompiled binaries are available from the following locations:
 
 \begin{description}
+	\item [Mandriva:] Traverso is part of the official distribution.
 	\item [(K)Ubuntu:] Traverso is part of the official distribution.
 	\item [Gentoo:] Traverso is part of the official distribution. New versions of Traverso appear in the Pro-Audio overlay first. You'll find more info at \cite{pro-audio-wiki}.
-	\item [SuSE:] Packages are available from \cite{suse-ref}
+	\item [OpenSuse:] Packages are available from \cite{suse-ref}.
+	\item [Windows:] A binary installer is available from the Traverso homepage \cite{trav-hp}.
+	\item [Apple OS X:] Disk images for i386 and PPC platforms are available from the Traverso homepage \cite{trav-hp}.
 \end{description}
 
 \section{Compiling from Source}
-This section describes how to compile Traverso from source on a (K,X)Ubuntu \Ubuntu\ system. For other distributions, the package names may be somewhat different, but you should be able to identify the correct package with your distributions package manager. Note that Traverso depends on the Qt library version 4.3.1 or newer.
+This section describes how to compile Traverso from source on Linux. The package names may vary from distribution to distribution, but you should be able to identify the correct package with your distribution's package manager. Note that Traverso depends on the Qt library version 4.3.1 or newer.
 
-First you will need to make your system fit to compile Traverso. And while we're at it, install some more useful things. Use your favorite package manager (like synaptic or adept) to install the following packages:
+If you have never compiled software based on the Qt toolkit before, you must install a C++ and Qt development environment first. Some distributions provide so-called meta packages which install all packages required for a certain task. E.\,g. setting the package manager of Mandriva 2009.0 to ``Meta Packages'' and installing the package ``task-kde4-devel'' from the category ``Development $\rightarrow$ KDE and Qt development'' sets up a development environment with minimum effort. If your distibution does not offer a Qt development meta package, you should install at least the following individual packages and all required dependencies:
 
 \begin{itemize}
- \item libqt4-core, libqt4-gui, libqt4-dev
- \item libsndfile1, libsndfile1-dev
- \item libsamplerate0, libsamplerate0-dev
- \item libjack0.100.0-0, libjack0.100.0-dev
- \item libasound2, libasound2-dev
- \item fftw3, fftw3-dev
- \item jackd, qjackctl, gcc, g++, make, cmake
- \item build-essential
- \item libwavpack1, libwavpack-dev, librdf0, librdf0-dev
- \item liblame0$^\bigstar$, liblame-dev$^\bigstar$
- \item libogg0$^\bigstar$, libogg-dev$^\bigstar$, libvorbis0a$^\bigstar$, libvobis-dev$^\bigstar$
- \item libflac++-dev$^\bigstar$, libflac++6$^\bigstar$
- \item libmad0-dev$^\bigstar$, libmad0$^\bigstar$
+	\item gcc
+	\item g++
+	\item make
+	\item cmake
+	\item libqt4-core, libqt4-gui, libqt4-dev
 \end{itemize}
-On (K,X)Ubuntu the following will get you going:
-\begin{verbatim}
-$ sudo apt-get install build-essential libqt4-core \
- libqt4-gui libqt4-dev libsndfile1 libsndfile1-dev \
- libsamplerate0 libsamplerate0-dev libjack0.100.0-0 \
- libjack0.100.0-dev libasound2 libasound2-dev \
- libwavpack1 libwavpack-dev librdf0 librdf0-dev \
- liblame0 liblame-dev \
- libogg0 libogg-dev libvorbis0a libvorbis-dev \
- libflac++-dev libflac++6 \
- libmad0-dev libmad0 \
- fftw3 fftw3-dev jackd qjackctl gcc g++ make cmake
-\end{verbatim}
-The packages marked with $^\bigstar$ are optional, but they will add support for compressed file formats such as Ogg/Vorbis, MP3, or FLAC. Thus if they are avalable for your platform, it is recommended to install them as well. If some packages are not available, you should enable the universe repository. Instructions on how to add repositories are available for Kubuntu and Ubuntu on the distribution website and related forums / wikis.
 
-In case you have version 3 of the Qt library installed (which is the default in (K,X)Ubuntu), you must make sure that the tools of version 4 are used. Open a terminal, enter the following commands and always select the Qt4 version when asked:
+Then you should install various various libraries and development packages required by Traverso:
 
-\begin{verbatim}
-$ sudo update-alternatives --config qmake
-$ sudo update-alternatives --config moc
-$ sudo update-alternatives --config uic
-\end{verbatim}
+\begin{itemize}
+	\item libsndfile1, libsndfile1-dev
+	\item libsamplerate0, libsamplerate0-dev
+	\item libasound2, libasound2-dev
+	\item fftw3, fftw3-dev
+	\item librdf0/libredland0, librdf0-dev/libredland-dev
+	\item libwavpack1, libwavpack-dev
+	\item libjack0.100.0-0$^\bigstar$, libjack0.100.0-dev$^\bigstar$, jackd$^\bigstar$, qjackctl$^\bigstar$
+	\item liblame0$^\bigstar$, liblame-dev$^\bigstar$
+	\item libogg0$^\bigstar$, libogg-dev$^\bigstar$, libvorbis0a$^\bigstar$, libvobis-dev$^\bigstar$
+	\item libflac++-dev$^\bigstar$, libflac++6$^\bigstar$
+	\item libmad0-dev$^\bigstar$, libmad0$^\bigstar$.
+\end{itemize}
 
-Now your system is ready to compile Traverso from source! Download the latest stable release of Traverso from the Traverso homepage. Extract it in some directory like /home/you/traversosource/ and compile it with the following commands:
+The packages marked with $^\bigstar$ are optional, but they will add support for compressed file formats such as Ogg/Vorbis, MP3, or FLAC. Thus if they are avalable on your platform, it is recommended to install them as well.
+
+In case you have version 3 of the Qt development packages installed, you must make sure that the tools of version 4 are used. If you don't know how to achieve that, please ask for help in a distribution-specific forum, as there is no distribution-independent solution.
+
+Now your system is ready to compile Traverso from source! Download the source code archive of the latest stable release of Traverso from \cite{trav-hp} and store it in your home directory. Extract and compile it with the following commands:
 
 \begin{verbatim}
 $ tar -zxvf traverso-x.x.x.tar.gz
@@ -60,4 +53,4 @@ $ cd traverso-x.x.x
 $ cmake .
 $ make -j 2
 \end{verbatim}
-This will take some time, and if you followed the instructions above carefully, it should run through without errors. When the make process has finished and you get back to the command line prompt, start Traverso by typing \texttt{bin/traverso}. If this doesn't work, check again if you followed the instructions above correctly, as the compilation seems to have failed.
+This will take some time, and if you followed the instructions above carefully, it should run through without errors. When the make process has finished and you get back to the command line prompt, start Traverso by typing \texttt{bin/traverso}. If this doesn't work and the compilation fails, check again if you followed the instructions above correctly. If you can't find a solution, refer to chapter \ref{sect_help} for further information on where to ask for help, or ask in your distribution's user forum.

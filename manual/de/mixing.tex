@@ -12,7 +12,7 @@ Beide Enden eines Clips können sanft ein- bzw. ausgeblendet werden. Platziert d
 
 
 \begin{figure}[t]
- \centering\includegraphics[width=0.8\textwidth]{images/fades}
+ \centering\includegraphics[width=0.8\textwidth]{../images/fades}
  \caption{Verschiedene Ein- und Ausblendekurven stehen zur Verfügung. Alle Kurven basieren auf Splines mit zwei Kontrollpunkten (Kreise), deren Position man über die Werte ,,bending'' und ,,strength'' verändern kann.}
  \label{fig_fades01}
 \end{figure}
@@ -20,7 +20,7 @@ Beide Enden eines Clips können sanft ein- bzw. ausgeblendet werden. Platziert d
 Die verschiedenen Kurven basieren alle auf kubischen Splines mit vier Knotenpunkten. Zwei der Knoten definieren die Stärke der Biegung. Die Position dieser Knoten kann über die zwei Parameter ,,Biegung'' (,,bending'') und ,,Stärke'' (,,strength'') verändert werden. ,,Biegung'' ändert die Richtung der Tangenten in den Endpunkten, wogegen ,,Stärke'' die Gewichtung der Tangenten vorgibt (\FigB~\ref{fig_fades02}). Die Punkte können nicht frei und unabhängig verschoben werden, stattdessen bietet Traverso verschiedene vordefinierte Modi an (\FigB~\ref{fig_fades01}):
 
 \begin{figure}[t]
- \centering\includegraphics[width=0.8\textwidth]{images/fades2}
+ \centering\includegraphics[width=0.8\textwidth]{../images/fades2}
  \caption{,,Bending''- und ,,Strength''-Werte dienen dazu, die Form der Ein- und Ausblendekurve zu bearbeiten (hier am Beispiel ,,Long'' gezeigt).}
  \label{fig_fades02}
 \end{figure}
@@ -43,7 +43,7 @@ Blenden können zudem numerisch bearbeitet werden. Öffnet dazu den Bearbeitungs
 Volumenkurven sind ein mächtiges Werkzeug, um den Volumenverlauf eines Audioclips zu bearbeiten. Die Kurven sind fest an die Audioclips gebunden und werden mit diesen mit verschoben. Um eine Volumenkurve zu erstellen oder zu bearbeiten, müssen über den Knopf ,,Effekte anzeigen'' in der oberen Menüleiste die Effekte und Kurven eingeblendet werden (\FigB~\ref{fig_gcurve01}). Standardmä"sig verläuft die Kurve bei 0~dB, am Anfang jedes Clips wird automatisch ein Knoten eingefügt. Weitere Knoten können an der Position des Mauszeigers mit \dact{C} erstellt werden. Die Knoten können auch verschoben \hact{D} und gelöscht \dact{R} werden. Diese Aktionen wirken jeweils auf den Knoten, der sich am nächsten zum Mauszeiger befindet.
 
 \begin{figure}[t]
- \centering\includegraphics[width=\textwidth]{images/gcurve01}
+ \centering\includegraphics[width=\textwidth]{../images/gcurve01}
  \caption{Durch drücken des Knopfes ,,Effekte anzeigen'' in der Menüleisten werden die Volumenkurven angezeigt. Knoten können hinzugefügt, frei verschoben, und gelöscht werden.}
  \label{fig_gcurve01}
 \end{figure}
@@ -52,7 +52,7 @@ Volumenkurven sind ein mächtiges Werkzeug, um den Volumenverlauf eines Audiocli
 Traverso unterstützt den Plugin-Standard LV2, der die Nachfolge des bekannten LADSPA-Standards antreten wird. Mit \sact{F5} kann ein Dialog aufgerufen werden, der alle installierten LV2-Plugins auflistet (\FigB~\ref{fig_pluglist}). Aktive Plugins werden in der jeweiligen Spur als Kästchen angezeigt. Jedes dieser Felder hat sein eigenes Kontextmenü. Haltet dazu den Mauszeiger über ein Kästchen und drückt \sact{Q} der \sact{Rechte Maustaste}. Mit \sact{E} ruft ihr ein Menü auf, in dem die Plugin-Parameter geändert werden können. Plugins können auch deaktiviert \sact{B} oder gelöscht \dact{R} werden. In Traverso \Version\ werden alle Plugins Post-Fader eingefügt. Weitere Optionen folgen in zukünftigen Versionen.
 
 \begin{figure}[t]
- \centering\includegraphics[width=0.6\textwidth]{images/plugin-list}
+ \centering\includegraphics[width=0.6\textwidth]{../images/plugin-list}
  \caption{Jeder Spur können Plugins hinzugefügt werden. Der Plugin-Manager wird mit \sact{F5} aufgerufen.}
  \label{fig_pluglist}
 \end{figure}

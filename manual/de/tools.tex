@@ -4,7 +4,7 @@ Die Korrelationsgradanzeige in Traverso analysiert den linken und rechten Kanal 
 Um zu erklären wozu man die Korrelation überwachen muss nehmen wir an, eine reine Sinuswelle gleicher Frequenz wird sowohl über den rechten als auch über den linken Kanal abgespielt. Werden die beiden Wellen addiert (dies geschieht, wenn das Signal Mono-geschaltet wird, oder wenn sich die Signale in der Luft überlagern), so entsteht ein Summensignal, das je nach Phasenunterschied der beiden Wellen Interferenzerscheinungen aufweist. Das hei"st, wenn zwei positive Werte addiert werden, entsteht ein grö"serer Wert, aber wenn ein positiver und ein negativer Wert summiert werden, entsteht ein Wert mit kleinerem Betrag als die Beträge der Summanden. In einigen Fällen kann dies sogar zu kompletter Auslöschung des Signals führen (\FigB\ \ref{fig_interference}).
 
 \begin{figure}
-	\centering\includegraphics[width=0.8\textwidth]{images/sine01}
+	\centering\includegraphics[width=0.8\textwidth]{../images/sine01}
 	\caption{Werden zwei Sinuswellen addiert, entstehen Interferenzen die entweder zu einer Verstärkung (in Phase, links), einem mehr oder weniger unveränderten Signal (unkorreliert, mitte), oder zu Auslöschung führen können (au"ser Phase, rechts).}
 	\label{fig_interference}
 \end{figure}
@@ -21,9 +21,9 @@ Die Korrelationsgradanzeige in Traverso (Menü ,,Ansicht $\rightarrow$ Korrelati
 
 \begin{figure}
 	\centering
-	\subfigure[Stereo, $r = 0.0$]{\includegraphics[width=0.7\textwidth]{images/cmeter1}}
-	\subfigure[Mono, $r = 1.0$]{\includegraphics[width=0.7\textwidth]{images/cmeter2}}
-	\subfigure[Phasenauslöschung, $r = -1.0$]{\includegraphics[width=0.7\textwidth]{images/cmeter4}}
+	\subfigure[Stereo, $r = 0.0$]{\includegraphics[width=0.7\textwidth]{../images/cmeter1}}
+	\subfigure[Mono, $r = 1.0$]{\includegraphics[width=0.7\textwidth]{../images/cmeter2}}
+	\subfigure[Phasenauslöschung, $r = -1.0$]{\includegraphics[width=0.7\textwidth]{../images/cmeter4}}
 	\caption{Die Korrelationsgradanzeige in Traverso zeigt den Korrelationskoeffizienten des Masterausgangs als Gradient zwischen zwei vertikalen Linien, die jeweils den linken und rechten Kanal darstellen. Verläuft der Gradient genau von L bis R, ist das Signal völlig unkorreliert ($r = 0.0$), und es besitzt ein sehr breites Stereobild (oben). Reduziert sich der Gradient auf eine Linie, sind die Daten perfekt korreliert ($r = 1.0$), was bedeutet, dass das Ausgangssignal mono erscheint (mitte). Erstreckt sich der Gradient über die L und R Linien hinaus, wird die Korrelation negativ und das Risiko von Phasenauslöschungen im Monosignal steigt an (unten).}
 	\label{fig_cmeter01}
 \end{figure}
@@ -39,7 +39,7 @@ Die FFT-Spektrumsanzeige analysiert den Master-Ausgang und zerlegt das Audiosign
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.6\textwidth]{images/fft1}
+	\includegraphics[width=0.6\textwidth]{../images/fft1}
 	\caption{Die FFT-Spektrumsanzeige zerlegt das Mastersignal in seine Frequenzen.}
 	\label{fig_fft1}
 \end{figure}
@@ -62,7 +62,7 @@ Die Fensterungsfunktion kann in diesem Dokument nicht mit einfachen Worten erkl�
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.7\textwidth]{images/fft3}
+	\includegraphics[width=0.7\textwidth]{../images/fft3}
 	\caption{Über einen Konfigurationsdialog (\sact{E}) kann man diverse Parameter einstellen.}
 	\label{fig_fft3}
 \end{figure}
@@ -74,7 +74,7 @@ Traverso bietet die Möglichkeit, Audioclips extern durch Zusatzprogramme wie ,,
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\textwidth]{images/external00}
+	\includegraphics[width=\textwidth]{../images/external00}
 	\caption{Drückt man auf einem Audioclip \sact{E}, so öffnet sich ein Dialog (links). Drückt man darin den Knopf ,,Externe Bearbeitung'', öffnet sich ein weiterer Dialog (rechts), in dem man zahlreiche Effekte auf die Audiodatei anwenden kann.}
 	\label{fig_external01}
 \end{figure}

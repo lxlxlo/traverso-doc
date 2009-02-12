@@ -11,7 +11,7 @@ Audio clips can be split by pointing the mouse cursor to the desired position an
 Both ends of a clip can be faded smoothly by holding \hact{F} on the left or right half of the clip and moving the mouse horizontally. On the left half the key action refers to the fade-in, on the right half it refers to the fade-out. Several fade shapes are available, which can be toggled by \sact{M} (\FigB~\ref{fig_fades01}).
 
 \begin{figure}[t]
- \centering\includegraphics[width=0.8\textwidth]{images/fades}
+ \centering\includegraphics[width=0.8\textwidth]{../images/fades}
  \caption{Different fade shapes are available in Traverso. Fade curves are defined as splines with two control points (circles) which can be modified by the values ``bending'' and ``strength''.}
  \label{fig_fades01}
 \end{figure}
@@ -19,7 +19,7 @@ Both ends of a clip can be faded smoothly by holding \hact{F} on the left or rig
 All shapes are based on a cubic spline curve with four knots. Two knots define the bending of the non-linear shapes. The positions of these control knots can be modified by two values ``bending'' and ``strength''. ``Bending'' defines the direction of the tangent in the end point, whereas ``strength'' changes the weight of the tangent (\FigB~\ref{fig_fades02}). It is not possible to move the control knots freely and independently, instead Traverso knows several modes which are relevant for fade shapes (\FigB~\ref{fig_fades01}):
 
 \begin{figure}[t]
- \centering\includegraphics[width=0.8\textwidth]{images/fades2}
+ \centering\includegraphics[width=0.8\textwidth]{../images/fades2}
  \caption{Bending and strength values can be used to alter the shape of the fade curves. (Demonstrated with the ``Long'' mode.)}
  \label{fig_fades02}
 \end{figure}
@@ -42,7 +42,7 @@ The fades can be edited numerically by pressing \sact{E} on a clip, and changing
 Gain curves are a powerful feature to change the gain of an audio clip in the time line. The curves are child elements of audio clips, therefore their \emph{relative} position to the audio clip will always stays the same. To change to effects mode, select the entry ``Mode: Effects'' from the dropdown menu in the menu bar (\FigB~\ref{fig_gcurve01}). To change back to edit mode ``Mode: Edit''. A default curve node is added automatically at the beginning of the clip at 0~dB. Additional nodes can be created by \dact{C} at the position of the mouse cursor. Nodes can also be dragged (\hact{D}) and removed (\dact{R}). These actions always apply to the node closest to the mouse cursor, which is indicated by a different colour.
 
 \begin{figure}[t]
- \centering\includegraphics[width=\textwidth]{images/gcurve01}
+ \centering\includegraphics[width=\textwidth]{../images/gcurve01}
  \caption{The ``effects mode'' of Traverso can be activated from the dropdown menu in the menu bar. Gain curves are only visible in that mode. Nodes can be added, removed, and dragged freely.}
  \label{fig_gcurve01}
 \end{figure}
@@ -51,7 +51,7 @@ Gain curves are a powerful feature to change the gain of an audio clip in the ti
 Traverso supports the LV2 plugin interface, which is the successor of the LADSPA standard. Plugins can be added to tracks by pressing \sact{F5}, which opens a list of all LV2 plugins installed on the system (\FigB~\ref{fig_pluglist}). Active plugins will be shown as semi-transparent fields in the track view. These fields have their own context menu; just try it out by holding the mouse on them and pressing \sact{Q} or \sact{Right Mouse Button}. Pressing \sact{E} will open a generic dialog, which allows to adjust the plugin parameters. Plugins can also be bypassed (\sact{B}) and removed (\dact{R}). Version 0.40.x inserts all plugins post-fader. More flexible solutions will follow in upcoming versions.
 
 \begin{figure}[t]
- \centering\includegraphics[width=0.6\textwidth]{images/plugin-list}
+ \centering\includegraphics[width=0.6\textwidth]{../images/plugin-list}
  \caption{Plugins can be added to a track by pressing \sact{F5}.}
  \label{fig_pluglist}
 \end{figure}

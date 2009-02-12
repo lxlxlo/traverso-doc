@@ -36,7 +36,7 @@ Wie ihr vielleicht schon festgestellt habt, kann ein Projekt in Traverso mehrere
 Manchmal sollen die Übergänge zwischen den CD-Tracks speziell bearbeitet werden, zum Beispiel indem man etwas Stille einfügt bevor das nächste Stück beginnt, oder indem man den Übergang überblendet. In solchen Fällen ist es einfacher, die CD in einem Arbeitsblatt zusammenzustellen, und die Tracks durch Markierungen in der Zeitachse festzulegen. Ein Beispiel dazu ist in \FigT~\ref{fig_markers01} abgebildet. Öffnet dazu ein Projekt mit nur zwei Audioclips, oder erstellt ein solches. Clip 1 soll als Track 1 auf die CD geschrieben werden, Clip 2 entsprechend als Track 2. Positioniert Clip 1 an Position 00:00:00, und Clip 2 hinter Clip 1 mit einer kleinen Lücke dazwischen, so dass der Übergang angenehm klingt. Haltet nun den Mauszeiger über die Lücke zwischen den Clips und drückt \sact{M}. In der Zeitachse wird an der Stelle ein kleines Dreieck eingefügt, ebenso bei Position 00:00:00 und am Ende des zweiten Clips. Letzteres ist mit ,,End'' beschriftet, und es markiert das Ende der CD. Falls ihr ein Hall-Plugin aktiviert habt, müsst ihr das Ende etwas nach hinten schieben, da die Hallfahne unter Umständen etwas über das Ende des Clips hinaus nachklingt.
 
 \begin{figure}[t]
- \centering\includegraphics[width=\textwidth]{images/markers01}
+ \centering\includegraphics[width=\textwidth]{../images/markers01}
  \caption{Wenn eine CD in der Zeitachse arrangiert wird, werden die Tracks über Marker festgelegt. Bei Position 00:00:00 und am Ende des Projektes müssen jeweils Marker vorhanden sein.}
  \label{fig_markers01}
 \end{figure}
@@ -44,7 +44,7 @@ Manchmal sollen die Übergänge zwischen den CD-Tracks speziell bearbeitet werde
 Diese Dreiecke sind Marker, und sie können frei verschoben, hinzugefügt oder gelöscht werden (\sact{Q} auf der Zeitachse listet alle Aktionen auf). Es ist jedoch möglich, Arrangements zu erstellen die keinen Sinn ergeben, zum Beispiel indem man keinen Marker am Anfang oder Ende des Projektes einfügt. In diesem Fall versucht Traverso, eine sinnvolle Lösung zu finden und fügt die notwendigen Marker automatisch beim Brennen hinzu. Traverso unterstützt CD-Text, der in einem speziellen Dialog (,,Ansicht $\rightarrow$ Marker-Dialog'', \FigT~\ref{fig_marker-editor}) bearbeitet werden kann. Aus diesem Dialog kann das Inhaltsverzeichnis als HTML-Datei exportiert werden. CD-Textfelder welche die gesamte CD betreffen können im Dialog ,,Projekt $\rightarrow$ Projektmanager'' im Karteireiter ,,CD-Text'' bearbeitet werden.
 
 \begin{figure}[ht]
- \centering\includegraphics[width=0.45\textwidth]{images/marker-editor}
+ \centering\includegraphics[width=0.45\textwidth]{../images/marker-editor}
  \caption{Der Marker-Dialog ,,Ansicht $\rightarrow$ Marker-Dialog'' erlaubt die Eingabe von CD-Text, das Verschieben und Umbenennen von Markern, und den Export des Inhaltsverzeichnisses als HTML-Datei.}
  \label{fig_marker-editor}
 \end{figure}
@@ -56,7 +56,7 @@ Wichtig für OS X-Benutzer: Die CD-Brennfunktion befindet sich noch in einem fr�
 Um das Projekt in eine Audiodatei zu exportieren drückt \sact{F9} oder wählt ,,Projekt $\rightarrow$ Export\dots''. Für den Dateiexport stehen mehrere Dateiformate zur Verfügung, darunter WAVE, WavPack, FLAC, Ogg/Vorbis und MP3. Das gebräuchlichste ist WAVE, das in verschiedenen Bittiefen exportiert werden kann. Wählt 16~bit wenn ihr die Datei später auf CD brennen wollt, und 32~bit wenn die Datei noch weiter bearbeitet werden soll. Zur Archivierung wählt FLAC oder WavPack um die Dateien ohne Qualitätsverlust zu komprimieren. Sollten nicht alle Formate verfügbar sein, wurde die Unterstützung bei der Kompilation von Traverso deaktiviert. Einige Distributionen unterstützen aus rechtlichen Gründen keine patentierten Formate. In diesem Fall muss man entweder damit leben, oder Traverso mit der entsprechenden Unterstützung neu kompilieren.
 
 \begin{figure}[t]
- \centering\includegraphics[width=\textwidth]{images/exportdlg}
+ \centering\includegraphics[width=\textwidth]{../images/exportdlg}
  \caption{\sact{F8} öffnet einen Dialog, mit dem entweder das aktuelle Arbeitsblatt oder das ganze Projekt auf CD gebrannt werden kann (links). Mit \sact{F9} öffnet man einen Dialog, mit dem das Projekt oder Arbeitsblatt in eine Audiodatei exportiert werden kann.}
  \label{fig_exportdlg}
 \end{figure}

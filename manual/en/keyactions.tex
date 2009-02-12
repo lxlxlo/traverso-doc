@@ -74,4 +74,17 @@ means press and release both the ``F'' and ``G'' key at the same time twice.
 
 This key command isn't used much actually, due the fact that it's rather hard to perform. But this makes it an ideal candidate for destructive actions!
 
+The cursor indicates which type of object is going to receive the key action by displaying a letter next to the cursor symbol. Hovering over a track it displays a T, over a clip a C, over a fade an F, and over a plugin a P (\FigB~\ref{fig_cursor}). If the key action is not known by the active object, the action is forwarded to the next object beneath the active object. For example in case of \hact{D} on a fade, the action is sent to the fade's audio clip.
+
+\begin{figure}[t]
+ \centering
+ \includegraphics[height=2\baselineskip]{../images/cursorFloatOverTrack.png}\qquad
+ \includegraphics[height=2\baselineskip]{../images/cursorFloatOverClip.png}\qquad
+ \includegraphics[height=2\baselineskip]{../images/cursorFloatOverFade.png}\qquad
+ \includegraphics[height=2\baselineskip]{../images/cursorFloatOverPlugin.png}
+ \caption{Depending on the type of object beneath the cursor, a letter is shown next to the arrow. From left to right: Track, Clip, Fade, Plugin.}
+ \label{fig_cursor}
+\end{figure}
+
+
 From the menu ``Settings $\rightarrow$ Preferences\dots'', in the page ``Keyboard'' you can export or print the current keymap by pressing the buttons ``Export Keymap'' or ``Print Keymap''. This allows to have an up-to-date keymap always at your fingertips.

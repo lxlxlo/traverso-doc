@@ -4,7 +4,7 @@ The correlation meter monitors the stereo output of Traverso and displays the co
 In order to explain what correlation is and why it is important, we assume that a pure sine wave is played back on both the left and the right master channel. When both signals are merged (which happens if the signals are played back in mono), the resulting signal is the sum of the left and the right channel. Depending on the phase difference between the source signals, interference effects occur. That is, if two positive amplitudes are summed, the absolute value is greater, whereas if a positive and a negative amplitude are summed, the absolute value becomes smaller. In some cases this can lead to complete extinction, leaving nothing but a silent signal (\FigB\ \ref{fig_interference}).
 
 \begin{figure}
-	\centering\includegraphics[width=0.8\textwidth]{images/sine01}
+	\centering\includegraphics[width=0.8\textwidth]{../images/sine01}
 	\caption{When summing up two sine waves, interference can either lead to amplification (in phase, left), remain more or less unchanged (uncorrelated, middle), or lead to extinction (out of phase, right).}
 	\label{fig_interference}
 \end{figure}
@@ -21,9 +21,9 @@ The correlation meter of Traverso (menu ``Views $\rightarrow$ Correlation meter'
 
 \begin{figure}
 	\centering
-	\subfigure[Stereo, $r = 0.0$]{\includegraphics[width=0.7\textwidth]{images/cmeter1}}
-	\subfigure[Mono, $r = 1.0$]{\includegraphics[width=0.7\textwidth]{images/cmeter2}}
-	\subfigure[Phase cancellation, $r = -1.0$]{\includegraphics[width=0.7\textwidth]{images/cmeter4}}
+	\subfigure[Stereo, $r = 0.0$]{\includegraphics[width=0.7\textwidth]{../images/cmeter1}}
+	\subfigure[Mono, $r = 1.0$]{\includegraphics[width=0.7\textwidth]{../images/cmeter2}}
+	\subfigure[Phase cancellation, $r = -1.0$]{\includegraphics[width=0.7\textwidth]{../images/cmeter4}}
 	\caption{The correlation meter in Traverso shows the correlation coefficient of the master output signal as a gradient between two lines representing the left and the right channel. If the gradient spreads from L to R, the data is uncorrelated (correlation coefficient $r = 0.0$), and the signal has a wide stereo width (top). If the gradient is collapsed to a line, the data is perfectly correlated ($r = 1.0$), which means the signal is mono (middle). If the gradient spreads beyond the L and R lines, the correlation becomes negative, which means there's a high risk of audible phase cancellations if the output is switched to mono (bottom).}
 	\label{fig_cmeter01}
 \end{figure}
@@ -39,7 +39,7 @@ The FFT spectrum analyzer monitors the stereo output channel and decomposes the 
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.6\textwidth]{images/fft1}
+	\includegraphics[width=0.6\textwidth]{../images/fft1}
 	\caption{The FFT spectrum analyzer decomposes the master output signal into its frequencies.}
 	\label{fig_fft1}
 \end{figure}
@@ -62,7 +62,7 @@ The windowing function is highly FFT specific and it is beyond the scope of this
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.7\textwidth]{images/fft3}
+	\includegraphics[width=0.7\textwidth]{../images/fft3}
 	\caption{A configuration dialog called with \sact{E} allows to configure many parameters of the FFT spectrum analyzer.}
 	\label{fig_fft3}
 \end{figure}
@@ -74,7 +74,7 @@ Traverso allows to process audio clips offline by using external programs such a
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.5\textwidth]{images/external00}
+	\includegraphics[width=0.5\textwidth]{../images/external00}
 	\caption{By pressing \sact{E} on an audio clip, a dialog opens (left). Pressing the button ``External Processing'' opens another dialog (right) which allows to apply various offline effects.}
 	\label{fig_external01}
 \end{figure}

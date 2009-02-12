@@ -40,7 +40,7 @@ As you may have noticed, Traverso allows to have several sheets in a project. So
 Sometimes it is important to fine-tune the transition from one track to the next, e.\,g. by adding a little bit of silence in between, or by fading the previous track into the next one. In that case it can be easier to arrange the entire CD in one timeline and split it into tracks using markers. Let's look at an example in order to show how this works. (Look at \FigT~\ref{fig_markers01} if you get lost with the explanations.) Open or create a project with only two audio clips. Suppose we want clip 1 to be track 1 on the CD, and clip 2 will be track 2. Position them on the first and maybe second track, starting at position 00:00:00, as you want to hear them on the CD. Leave some silence between the end of clip 1 and the beginning of clip 2. To get Traverso to start a new CD track there, position the mouse cursor on the gap between the two clips, and press \sact{M}. This adds a small triangle to the timeline at the position of the mouse cursor, and two more at position 00:00:00 and at the end of clip 2. The latter one is labelled ``End'', and it marks the end of the CD. You can shift it a bit further back if you don't want the CD to stop right there (remember you  can have reverb tails extending beyond the last audio sample, which you don't want to cut off).
 
 \begin{figure}[t]
- \centering\includegraphics[width=\textwidth]{images/markers01}
+ \centering\includegraphics[width=\textwidth]{../images/markers01}
  \caption{If a CD is arranged in one sheet, markers can be used to define CD tracks. Always keep the ones at position 00:00:00 and at the end.}
  \label{fig_markers01}
 \end{figure}
@@ -48,7 +48,7 @@ Sometimes it is important to fine-tune the transition from one track to the next
 These triangles are CD track markers, and they can be moved, added, and deleted freely (press \sact{Q} on the timeline to list all available functions.) However, it is also possible to create setups which don't make sense. E.\,g. only having one track marker in the timeline. In such cases, Traverso tries to guess the most sensible solution, and adds markers on the fly at positions it considers appropriate (which is usually at position 00:00:00 and after the last sample of the sheet containing audio data). Traverso also supports CD-text, which can be entered in the marker dialogue ``Sheet $\rightarrow$ Marker Editor\dots'' (\FigB~\ref{fig_marker-editor}). It is also possible to export the table of contents of the CD as an HTML file from this dialog. Album-wide CD-text can be entered in the project settings, opened from ``Project $\rightarrow$ Manage Project'', in the tab ``CD Text''.
 
 \begin{figure}[ht]
- \centering\includegraphics[width=0.6\textwidth]{images/marker-editor}
+ \centering\includegraphics[width=0.6\textwidth]{../images/marker-editor}
  \caption{The marker dialogue opened from ``Sheet $\rightarrow$ Marker Editor\dots'' allows to add CD-text, modify the markers, and export the table of contents as an HTML file.}
  \label{fig_marker-editor}
 \end{figure}
@@ -61,8 +61,8 @@ Note for OS X users: CD writing support is still experimental. You can choose be
 
 \begin{figure}[t]
  \centering
- \includegraphics[width=0.4\textwidth]{images/exportdlg}\qquad
- \includegraphics[width=0.5\textwidth]{images/exportdlg1}
+ \includegraphics[width=0.4\textwidth]{../images/exportdlg}\qquad
+ \includegraphics[width=0.5\textwidth]{../images/exportdlg1}
  \caption{\sact{F8} opens a dialogue that allows to burn the current sheet or the entire project on a CD (left). \sact{F9} opens an export dialogue which writes the current sheet or the entire project to the hard disk (right).}
  \label{fig_exportdlg}
 \end{figure}
