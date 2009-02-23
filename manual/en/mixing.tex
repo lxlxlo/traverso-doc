@@ -1,14 +1,26 @@
-Mixing features in Traverso \Version\ currently include gain, panorama, different fade shapes for fade-in and -out, trimming, splitting, moving of audio clips, and gain curves. An infrastructure for effect plugins using the LV2 standard is implemented, but  the LV2 standard and plugins are still under heavy construction. Traverso also has basic support for using Sox to process audio clips.
+As most modern DAW applications Traverso uses a hirarchical routing setup (\FigB~\ref{fig_routing01}) sending the audio signal from Audio Clips to Tracks, from Tracks to the Master Bus, and further to the audio driver of the operating system. This setup not only groups things that belong together, which makes it intuitive to understand. It also allows to apply effects where they are most effective in terms of user interaction and system load.
 
-\section{Moving, trimming, splitting}
-Clips can be moved freely by holding \hact{D} and moving the mouse. If snapping is active (\sact{S~N}), both ends of the dragged clip will snap to the beginning of the sheet, edges of other clips, markers, and to the work cursor.
+\begin{figure}[t]
+ \centering\includegraphics[width=\textwidth]{../images/routing1}
+ \caption{In a standard routing setup the signal is read by the Audio Clips (from a file on the hard disk), sent to the track, and further to the master bus. Each level applies its processing (gain, effects) before sending the signal to the next level.}
+ \label{fig_routing01}
+\end{figure}
 
-Move the mouse cursor on a clip, hold \hact{E}, and move the mouse horizontally to drag the edge of the clip which is nearest to the mouse position. If snapping is active, the edge will snap to the positions described above.
+\section{Working with Audio Clips}
+Audio Clips are the lowest level in the routing hirarchy. They represent audio files read from the hard disk. Audio clips always live in a track. Their primary purpose is to determine \emph{what} is played and \emph{where} it is played.
 
-Audio clips can be split by pointing the mouse cursor to the desired position and pressing \sact{X}. Of course the edges of the two clip fragments can be fine-tuned by holding \hact{E} as describes above.
+A new clip is created by importing an audio file (\sact{I}). An empty clip can be created by pressing \sact{I O} (insert silence), but it is not possible to load data into that clip once it has been created. To remove a clip press \dact{R}. Clips can be moved freely by holding \hact{D} and moving the mouse. If a lock symbol is drawn in the middle of the clip, it is locked against accidental moving. Use \sact{L} to lock/unlock audio clips. If snapping is active (\sact{S~N}), both ends of the dragged clip will snap to the beginning of the sheet, edges of other clips, markers, and to the work cursor. If more than one clip should be moved at once, use one of the following functions:
 
-\section{Fades}
-Both ends of a clip can be faded smoothly by holding \hact{F} on the left or right half of the clip and moving the mouse horizontally. On the left half the key action refers to the fade-in, on the right half it refers to the fade-out. Several fade shapes are available, which can be toggled by \sact{M} (\FigB~\ref{fig_fades01}).
+\begin{description}
+  \item[Selection:] Multiple clips can be selected by pressing \sact{S}. Moving actions \hact{D} applied to a member of the selection apply to all clips in the selection. Use \sact{A S} to select one clip and de-select all other ones, and use \dact{S} to select all clips in the sheet or to clear the selection. Use \sact{S D} to remove one clip from a selection.
+  \item[Fold track:] Using the Fold Track action on a track (CTRL $+$ \hact{D F}) moves all clips at and after the current position of the cursor. This function can be used if the relative position of the clips should not be changed, e.\,g. if a gap should be created in a track and all clips after the gap have to be moved.
+  \item[Fold sheet:] Similar to Fold Track, the Fold Sheet action (\hact{D F}) moves all audio clips of the entire sheet at and after the current position of the cursor, regardless of which track they live in. This function can be used to keep the audio clips synchronised across the tracks when moving clips.
+\end{description}
+
+All these actions discussed above are used to place the audio clip, i.\,e. \emph{where} it is played. To determine \emph{what} is played, or which section of the clip, the trim and split actions can be used. Move the mouse cursor on a clip, hold \hact{E}, and move the mouse horizontally to drag the edge of the clip which is nearest to the mouse position. If snapping is active, the edge will snap to the positions described above. Clips can be split by pointing the mouse cursor to the desired position and pressing \sact{X}. Of course the edges of the two clip fragments can be fine-tuned by holding \hact{E} as describes above. In addition to the position of the clip edge, both ends can be shaped by using fades and gain curves.
+
+\subsection{Fades}
+Both ends of a clip can be faded smoothly by holding \hact{F} on the left or right half of the clip and moving the mouse horizontally. On the left half the key action refers to the fade-in, on the right half it refers to the fade-out. Several fade shapes are available, which can be toggled pressing \sact{M} on the fade curve (\FigB~\ref{fig_fades01}).
 
 \begin{figure}[t]
  \centering\includegraphics[width=0.8\textwidth]{../images/fades}
@@ -24,21 +36,22 @@ All shapes are based on a cubic spline curve with four knots. Two knots define t
  \label{fig_fades02}
 \end{figure}
 
-\subsection{Linear}
+\subsubsection{Linear}
 Linear fades are a straight line between the start and end point. The control knots can't be changed. Linear fades tend to sound rather abrupt at the low-level end of the fade, and are thus not the preferred mode for long fade-outs, e.\,g. at the end of a sheet.
 
-\subsection{S-shaped}
+\subsubsection{S-shaped}
 The S-shaped mode starts with a horizontal tangent, is steep a the center, and passes into a horizontal tangent again. The beginning and end are very smooth, but the center part can sometimes change too quickly in short S-fades. The ``strength'' parameter can be used to soften the center part and make the volume change less obvious. The ``bending'' factor should usually remain between linear and horizontal tangents, however, vertical tangents can be used for effects.
 
-\subsection{Bended}
-The bended mode acts similar to the S-shaped mode, but the control knots point to the same side. This mode can be used to achieve a very fast volume drop at the beginning of the fade-out, and very soft towards the end. Both control parameters are useful to find the best balance between a beginning that is not too fast, and an ending that is still slow enough for a soft fade-out effect.
+\subsubsection{Bended}
+The bended mode acts similar to the S-shaped mode, but the control knots point to the same side. This mode can be used to achieve a very fast volume drop at the beginning of the fade-out, and very soft towards the end. Both control parameters are useful to find the best balance between a beginning that is not too fast, and an ending that is still slow audio signal from the clips arranged within.
+ enough for a soft fade-out effect.
 
-\subsection{Long}
+\subsubsection{Long}
 The long mode only allows to change the control knot at the low-level end of the fade. This mode is often used for very smooth fade-outs, e.\,g. at the end of a sheet. The high-level end changes fastly, but the low-level tail is very soft. The long mode often sounds more musical than a similar bended mode.
 
 The fades can be edited numerically by pressing \sact{E} on a clip, and changing to the page ``Fades'' in the clip settings dialog.
 
-\section{Gain curve}
+\subsection{Gain curve}
 Gain curves are a powerful feature to change the gain of an audio clip in the time line. The curves are child elements of audio clips, therefore their \emph{relative} position to the audio clip will always stays the same. To change to effects mode, select the entry ``Mode: Effects'' from the dropdown menu in the menu bar (\FigB~\ref{fig_gcurve01}). To change back to edit mode ``Mode: Edit''. A default curve node is added automatically at the beginning of the clip at 0~dB. Additional nodes can be created by \dact{C} at the position of the mouse cursor. Nodes can also be dragged (\hact{D}) and removed (\dact{R}). These actions always apply to the node closest to the mouse cursor, which is indicated by a different colour.
 
 \begin{figure}[t]
@@ -46,6 +59,13 @@ Gain curves are a powerful feature to change the gain of an audio clip in the ti
  \caption{The ``effects mode'' of Traverso can be activated from the dropdown menu in the menu bar. Gain curves are only visible in that mode. Nodes can be added, removed, and dragged freely.}
  \label{fig_gcurve01}
 \end{figure}
+
+\section{Working with Tracks}
+Tracks receive the audio signal from their child clips. A new track can be added by pressing \dact{T}. To remove an existing track press \dact{R}. All audio clips living in the removed track will also be removed.
+
+While clips represent audio files or ``takes'', tracks represent entire channels or instruments. It is thus recommended to apply instrument-wide effects such as gain, panorama or effect plugins, to the track, and only adjust individual clips if they really only apply to the clip. This keeps the project tidy and reduces system load.
+
+Besides gain, panorama and plugin effects tracks can be muted \sact{U} or solo'ed \sact{O} during the mixing process. Use the respective double actions \dact{} to toggle mute and solo of all tracks.
 
 \section{Plugins}
 Traverso supports the LV2 plugin interface, which is the successor of the LADSPA standard. Plugins can be added to tracks by pressing \sact{F5}, which opens a list of all LV2 plugins installed on the system (\FigB~\ref{fig_pluglist}). Active plugins will be shown as semi-transparent fields in the track view. These fields have their own context menu; just try it out by holding the mouse on them and pressing \sact{Q} or \sact{Right Mouse Button}. Pressing \sact{E} will open a generic dialog, which allows to adjust the plugin parameters. Plugins can also be bypassed (\sact{B}) and removed (\dact{R}). Version 0.40.x inserts all plugins post-fader. More flexible solutions will follow in upcoming versions.
