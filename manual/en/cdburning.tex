@@ -19,16 +19,7 @@ command:
 \end{verbatim}
 \normalsize
 
-If the command was not found, the next section explains how to install \texttt{cdrdao} on the Linux platform.
-
-\subsection{Linux}
-Installing \texttt{cdrdao} on Linux is straight forward, since it is part of all major distributions. Use your distribution's package manager (e.\,g. Synaptic or Adept on (K)Ubuntu, Yast on SuSE), search for \texttt{cdrdao} and install the binary package. Alternatively, you can install it from a terminal. The commands will differ depending on the distribution. For (K,X)Ubuntu, enter the following lines in a terminal:
-
-\begin{verbatim}
-sudo apt-get update
-sudo apt-get install cdrdao
-\end{verbatim}
-
+Installing \texttt{cdrdao} on Linux is straight forward, since it is part of all major distributions. Use your distribution's package manager, search for \texttt{cdrdao} and install the binary package.
 
 \section{Tracks and Markers}
 There are basically two ways of defining tracks for a CD. Each sheet can be a track, or the entire CD can be arranged in the timeline of a sheet and tracks are defined by markers. Combinations of the two ways are also possible. Let's have a closer look at these two concepts.
@@ -48,7 +39,7 @@ Sometimes it is important to fine-tune the transition from one track to the next
 These triangles are CD track markers, and they can be moved, added, and deleted freely (press \sact{Q} on the timeline to list all available functions.) However, it is also possible to create setups which don't make sense. E.\,g. only having one track marker in the timeline. In such cases, Traverso tries to guess the most sensible solution, and adds markers on the fly at positions it considers appropriate (which is usually at position 00:00:00 and after the last sample of the sheet containing audio data). Traverso also supports CD-text, which can be entered in the marker dialogue ``Sheet $\rightarrow$ Marker Editor\dots'' (\FigB~\ref{fig_marker-editor}). It is also possible to export the table of contents of the CD as an HTML file from this dialog. Album-wide CD-text can be entered in the project settings, opened from ``Project $\rightarrow$ Manage Project'', in the tab ``CD Text''.
 
 \begin{figure}[ht]
- \centering\includegraphics[width=0.6\textwidth]{../images/marker-editor}
+ \centering\includegraphics[width=0.4\textwidth]{../images/marker-editor}
  \caption{The marker dialogue opened from ``Sheet $\rightarrow$ Marker Editor\dots'' allows to add CD-text, modify the markers, and export the table of contents as an HTML file.}
  \label{fig_marker-editor}
 \end{figure}
@@ -61,8 +52,8 @@ Note for OS X users: CD writing support is still experimental. You can choose be
 
 \begin{figure}[t]
  \centering
- \includegraphics[width=0.4\textwidth]{../images/exportdlg}\qquad
- \includegraphics[width=0.5\textwidth]{../images/exportdlg1}
+ \includegraphics[width=0.35\textwidth]{../images/exportdlg}\qquad
+ \includegraphics[width=0.45\textwidth]{../images/exportdlg1}
  \caption{\sact{F8} opens a dialogue that allows to burn the current sheet or the entire project on a CD (left). \sact{F9} opens an export dialogue which writes the current sheet or the entire project to the hard disk (right).}
  \label{fig_exportdlg}
 \end{figure}
