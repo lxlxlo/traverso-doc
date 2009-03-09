@@ -1,15 +1,28 @@
-Die Mischfunktionen in Traverso \Version\ umfassen zur Zeit Volumen, Panorama, Ein- und Ausblenden mit verschiedenen Kurven, trimmen, aufteilen und verschieben von Audioclips, sowie LV2-Plugins für jede Spur. Au"serdem können Audioclips extern mit Sox bearbeitet werden.
+Wie die meisten modernen DAW-Systeme verwendet auch Traverso ein hierarchisches Signalfluss-Konzept (\FigB~\ref{fig_routing01}), bei dem das Audio-Signal von Audioclips zu der Spur, von der Spur zum Master-Kanal, und von dort weiter zum Audio-System des Betriebssystems geschickt wird. Dieses Konzept gruppiert nicht nur Dinge, die zusammengehören, sondern erlaubt es au"serdem, Effekte dort einzusetzen, wo sie am effizientesten im Bezug auf Bedienung und Systemauslastung sind.
 
-\section{Verschieben, trimmen, aufteilen}
-Audioclips können mit der Maus durch drücken von \hact{D} frei verschoben werden. Ist das Raster aktiv (\sact{S N}), rasten die beiden Enden jewels am Anfang der Spur, an den Enden anderer Clips, an Markierungen, und am Arbeitscursor ein.
+\begin{figure}[t]
+ \centering\includegraphics[width=\textwidth]{../images/routing1}
+ \caption{In einem Standard-Setup lesen die Audioclips das Signal aus einer Datei auf der Festplatte, senden es anschlie"send zu der Spur und weiter zum Masterkanal. Jede Stufe bearbeitet das Signal mit ihren Effekten (Lautstärke, Panorama, Plugins) bevor es zur nächsten Stufe gesendet wird.}
+ \label{fig_routing01}
+\end{figure}
 
-Platziert den Mauszeiger über einem Audioclip und drückt \hact{E}. Dann bewegt die Maus horizontal um das Ende, das sich näher beim Mauszeiger befindet, zu verschieben. Ist das Raster aktiv, rasten auch die Enden auf die oben erwähnten Positionen ein.
+\section{Arbeiten mit Audioclips}
+Audioclips bilden die unterste Ebene in der Signalfluss-Hierarchie. Sie repräsentieren Audiodateien, die sie direkt von der Festplatte lesen. Audioclips leben immer innerhalb einer Spur und sie bestimmen, \emph{was} abgespielt wird und \emph{wo}.
+
+Einen neuen Clip erstellt man durch importieren einer Audiodatei (\sact{I}). Ein leerer Clip kann ebenfalls durch drücken von \sact{I O} erstellt werden. Es ist jedoch nicht möglich, nachträglich eine Audiodatei in einen leeren Clip zu laden. Gelöscht werden Clips durch \dact{R}. Durch \hact{D} können sie mit der Maus frei verschoben werden. Um sie gegen unabsichtliches Verschieben zu schützen, können sie mit \sact{L} gesperrt werden, was durch ein kleines Schlosssymbol in der Mitte des Clips angezeigt wird. Wenn das Raster aktiv ist (\sact{S N}), rasten beide Enden an markanten Stellen (Anfang der Spur, Anfang/Ende von anderen Clips, Arbeitscursor, Marker) ein. Mehrere Clips gleichzeitig können wie folgt verschoben werden.
+
+\begin{description}
+ \item[Selektion:] Durch \sact{S} können mehrere Clips ausgewählt werden. Verschiebe-Aktionen betreffen alle Clips einer Selektion. Durch \sact{A S} wird ein Clip exklusiv ausgewählt (alle anderen werde abgewählt), und durch \dact{S} werden entweder alle oder kein Clip ausgewählt. Einzelne Clips werden mit \sact{S D} aus der Selektion entfernt.
+ \item[Faltung der Spur (Fold Track):] Die Fold Track-Aktion (CTRL $+$ \hact{D F}) verschiebt alle Clips einer Spur unterhalb und hinter der aktuellen Position des Mauszeigers. Diese Funktion wird verwendet, wenn in einer Spur Platz geschaffen oder eine Lücke geschlossen werden soll, ohne dass sich die relative Position der folgenden Clips ändert.
+ \item[Faltung des Arbeitsbereichs (Fold Sheet):] Ähnlich wie bei der Fold Track-Aktion werden bei Fold Sheet (\hact{D F}) alle Clips eines ganzen Arbeitsbereiches unterhalb und hinter der aktuellen Position des Mauszeigers verschoben. So bleiben die relativen Positionen aller Clips erhalten, unabhängig davon, in welcher Spur sie sich befinden.
+\end{description}
+
+Mit den bisher besprochenen Aktionen bestimmen wir, \emph{wo} die Audio-Datei abgespielt werden soll. Um zu bestimmen \emph{was} gespielt wird, also um einen Ausschnitt aus einer Datei festzulegen, können wir Clips beschneiden, zerteilen, oder ein- und ausblenden. Platziert den Mauszeiger über einem Audioclip und drückt \hact{E}. Dann bewegt die Maus horizontal um das Ende, das sich näher beim Mauszeiger befindet, zu verschieben. Ist das Raster aktiv, rasten auch die Enden auf die oben erwähnten Positionen ein.
 
 Durch \sact{X} werden Audioclips an der Stelle in zwei Clips aufgeteilt, an der sich der Mauszeiger befindet. Die Schnittstelle kann nachträglich mit \hact{E} exakt angepasst werden.
 
-\section{Ein- und Ausblenden}
+\subsection{Ein- und Ausblenden}
 Beide Enden eines Clips können sanft ein- bzw. ausgeblendet werden. Platziert dazu den Mauszeiger auf dem Clip in der Nähe des Endes, das bearbeitet werden soll, und drückt \hact{F}. Auf der linken Seite wird durch bewegen der Maus eine Einblendkurve erstellt, auf der rechten Seite analog dazu eine Ausblendkurve. Die verschiedenen Formen können mit \sact{M} aufgerufen werden (\FigB~\ref{fig_fades01}).
-
 
 \begin{figure}[t]
  \centering\includegraphics[width=0.8\textwidth]{../images/fades}
@@ -25,16 +38,16 @@ Die verschiedenen Kurven basieren alle auf kubischen Splines mit vier Knotenpunk
  \label{fig_fades02}
 \end{figure}
 
-\subsection{Linear}
+\subsubsection{Linear}
 Im linearen Modus bilden die Blendekurven eine gerade Linie zwischen Anfang und Ende des Blendebereichs. Die Kontrollknoten können nicht verschoben werden. Diese Kurven klingen relativ abrupt, besonders am leisen Ende des Bereichs, und werden deshalb eher selten für lange Ausblend-Bereiche am Ende eines Liedes verwendet.
 
-\subsection{S-Form}
+\subsubsection{S-Form}
 S-Kurven starten mit einer horizontalen Tangente, werden im Mittenbereich sehr steil, und gehen am Ende wieder in eine horizontale Tangente über. Anfang und Ende sind sehr weich, aber die schnelle Volumenänderung in der Mitte kann manchmal deutlich hörbar aufallen. Dies kann über die Werte ,,Biegung'' und ,,Stärke'' etwas entschärft werden. Senkrechte Tangenten sind zwar grundsätzlich möglich, ergeben aber in den seltensten Fällen Sinn.
 
-\subsection{Gebogen}
+\subsubsection{Gebogen}
 Im gebogenen Modus verläuft jeweils eine Tangente senkrecht und eine waagrecht. Dadurch sind Blenden möglich, die im leisen Bereich sehr flach verlaufen, und im lauten Bereich sehr steil. Über die Werte ,,Biegung'' und ,,Stärke'' kann der Grad der Biegung beeinflusst werden. Sanft ausklingende Ausblendungen sind mit diesem Modus möglich.
 
-\subsection{Lang}
+\subsubsection{Lang}
 Im ,,Lang''-Modus kann nur der Kontrollpunkt am leisen Ende der Kurve bearbeitet werden. Dieser Modus wird oft für sehr sanfte und lange Ausblendungen verwendet, da er in der Regel durch den sanften Ausklang musikalischer klingt als vergleichbare gebogene oder S-Kurven.
 
 Blenden können zudem numerisch bearbeitet werden. Öffnet dazu den Bearbeitungsdialog des Clips durch drücken von \sact{E}, und wechselt auf die Seite ,,Fades''.
@@ -47,6 +60,13 @@ Volumenkurven sind ein mächtiges Werkzeug, um den Volumenverlauf eines Audiocli
  \caption{Durch drücken des Knopfes ,,Effekte anzeigen'' in der Menüleisten werden die Volumenkurven angezeigt. Knoten können hinzugefügt, frei verschoben, und gelöscht werden.}
  \label{fig_gcurve01}
 \end{figure}
+
+\section{Arbeiten mit Spuren}
+Spuren erhalten ihr Eingangssignal von den Audioclips, die innerhalb der Spur platziert sind. Neue Spuren können durch \dact{T} und \dact{R} hinzugefügt und gelöscht werden. Beim Löschen werden alle darin enthaltenen Clips ebenfalls gelöscht.
+
+Während Clips einzelne Dateien oder ,,Takes'' einer Aufnahme darstellen, repräsentieren Spuren in der Regel ein Instrument. Deshalb sollten Effekte auch unbedingt auf Spuren angewandt werden. Auf einzelne Clips hingegen nur wenn sie wirklich nur eine kleine Anzahl Clips betreffen. Dadurch reduziert sich der Arbeitsaufwand und die Systemlast erheblich.
+
+Neben Volumen, Panorama und Effekt-Plugins können Spuren auch stumm (\sact{U}) oder solo (\sact{O}) geschaltet werden. Um alle Spuren auf stumm oder solo zu stellen, bzw. um die Stumm- oder Solo-Stellung aller Spuren auf einmal aufzuheben, werden die entsprechenden Doppelklick-Aktionen \dact{} verwendet.
 
 \section{Plugins}
 Traverso unterstützt den Plugin-Standard LV2, der die Nachfolge des bekannten LADSPA-Standards antreten wird. Mit \sact{F5} kann ein Dialog aufgerufen werden, der alle installierten LV2-Plugins auflistet (\FigB~\ref{fig_pluglist}). Aktive Plugins werden in der jeweiligen Spur als Kästchen angezeigt. Jedes dieser Felder hat sein eigenes Kontextmenü. Haltet dazu den Mauszeiger über ein Kästchen und drückt \sact{Q} der \sact{Rechte Maustaste}. Mit \sact{E} ruft ihr ein Menü auf, in dem die Plugin-Parameter geändert werden können. Plugins können auch deaktiviert \sact{B} oder gelöscht \dact{R} werden. In Traverso \Version\ werden alle Plugins Post-Fader eingefügt. Weitere Optionen folgen in zukünftigen Versionen.

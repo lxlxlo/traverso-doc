@@ -1,59 +1,52 @@
-Eine einfache Art Traverso zu installieren ist die Verwendung eines bereitgestellten Installationspakets. Für Traverso \Version\ existieren Binärpakete für einige populäre Linux-Distributionen, sowie Apple OS X auf Intel- und PPC-Architekturen. In der schnelllebigen Opensource-Welt ist es jedoch am einfachsten, sich auf der Traverso-Webseite \cite{trav-hp} über die aktuelle Situation im Bezug auf Installationsmöglichkeiten zu informieren. Alternativ kann man sich das Programm auch aus dem Quellcode kompilieren. Dieser Vorgang wird hier im Detail beschrieben. Traverso wurde erfolgreich auf den Plattformen i586, ia64 und PPC (Linux und OS X) getestet.
+Eine einfache Art Traverso zu installieren ist die Verwendung eines bereitgestellten Installationspakets. Für stabile Versionen von Traverso existieren Binärpakete für einige populäre Linux-Distributionen, sowie für Apples OS X auf Intel- und PPC-Architekturen und für Microsoft Windows. In der schnelllebigen Opensource-Welt ist es jedoch am einfachsten, sich auf der Traverso-Webseite \cite{trav-hp} über die aktuelle Situation im Bezug auf Installationsmöglichkeiten zu informieren. Falls für ein System keine Installationspakete verfügbar sind, kann man sich das Programm auch aus dem Quellcode kompilieren. Dieser Vorgang wird hier im Detail beschrieben. Die Abhängigkeiten sind in den meisten Linux-Distributionen standardmä"sig enthalten und können über das Paketsystem installiert werden. Traverso wurde erfolgreich auf den Plattformen i586, ia64 und PPC getestet.
 
 \section{Binärpakte}
 Vorkompilierte Binärpakete erhält man im Allgemeinen von folgenden Quellen:
 
 \begin{description}
-	\item [(K)Ubuntu:] Auf der Download-Seite der Traverso-Webseite \cite{trav-hp} werden Binärpakete für Debian-Derivate bereitgestellt.
+	\item [Mandriva:] Traverso ist Teil der offiziellen Distribution.
+	\item [(K)Ubuntu:] Traverso ist Teil der offiziellen Distribution.
+	\item [Debian:] Traverso ist Teil der offiziellen Distribution.
 	\item [Gentoo:] Traverso ist Teil der offiziellen Distribution. Neue Versionen erscheinen zuerst im Pro-Audio Overlay. Aktuelle Informationen erhält man auf \cite{pro-audio-wiki}.
-	\item [SuSE:] Pakete sind auf \cite{suse-ref} erhältlich.
+	\item [OpenSuse:] Pakete sind auf \cite{suse-ref} erhältlich.
+	\item [Windows:] Ein Installationspaket wird auf der Traverso-Homepage \cite{trav-hp} bereitgestellt.
+	\item [Apple OS X:] Installationspakete für i386- und PPC-Plattformen werden auf der Traverso-Homepage \cite{trav-hp} bereitgestellt.
 \end{description}
 
 \section{Quellcode kompilieren}
-Dieser Abschnitt beschreibt die Übersetzung des Traverso-Quellcodes auf einem (K,X)Ubuntu \Ubuntu\ System. Die Paketnamen können für andere Distributionen etwas abweichen, generell sollte die Anleitung aber leich anzupassen sein. Traverso hängt von der Qt-Bibliothek Version 4.3.1 oder neuer ab.
+Dieser Abschnitt beschreibt die Übersetzung des Traverso-Quellcodes auf einem aktuellen Linux-System. Die Paketnamen können je nach Distribution etwas abweichen, generell sollte die Anleitung aber leich anzupassen sein. Traverso hängt von der Qt-Bibliothek Version 4.3.1 oder neuer ab.
 
-Zunächst muss das System für die Übersetzung des Quellcodes eingerichtet werden. Wenn wir schon dabei sind, installieren wir noch einige andere nützliche Dinge. Startet also den Paketmanager der Distribution (z.\,B. Synaptic oder Adept) und installiert folgende Pakete:
+Falls auf dem System vorher noch nie C++- oder Qt-Software kompiliert wurde, muss zunächst eine Entwicklungsumgebung dafür installiert werden. Moderne Distributionen bieten sogenannte Meta-Pakete an, die sämtliche erforderlichen Pakete auf einmal installieren. In Mandriva 2009.0 zum Beispiel stellt man dazu den Paketmanager auf ,,Meta Packages'' und installiert das Paket ,,task-kde4-devel'' aus der Kategorie ,,Development $\rightarrow$ KDE and Qt development''. Falls keine Meta-Pakete für Qt-Entwicklung angeboten werden, muss man von Hand mindestens die folgenden Pakete installieren:
 
 \begin{itemize}
- \item libqt4-core, libqt4-gui, libqt4-dev
+  \item gcc
+  \item g++
+  \item make
+  \item cmake
+  \item libqt4-core, libqt4-gui, libqt4-dev
+\end{itemize}
+
+Anschlie"send müssen diverse Bibliotheken und Entwicklerpakete installiert werden:
+
+\begin{itemize}
  \item libsndfile1, libsndfile1-dev
  \item libsamplerate0, libsamplerate0-dev
- \item libjack0.100.0-0, libjack0.100.0-dev
  \item libasound2, libasound2-dev
- \item libvorbis, libvorbis-dev, libmad0, libmad0-dev
+ \item fftw3, fftw3-dev
+ \item librdf0/libredland0, librdf0-dev/libredland-dev
+ \item libwavpack1, libwavpack-dev
  \item libwavpack, libwavpack-dev, librdf0, librdf0-dev
- \item libflac++, libflac++-dev, fftw3, fftw3-dev
- \item jackd, qjackctl, gcc, g++, make, cmake
- \item build-essential
- \item libwavpack1, libwavpack-dev, librdf0, librdf0-dev
+ \item libflac++, libflac++-dev
+ \item libjack0.100.0-0, libjack0.100.0-dev, jackd, qjackctl
  \item liblame0$^\bigstar$, liblame-dev$^\bigstar$
  \item libogg0$^\bigstar$, libogg-dev$^\bigstar$, libvorbis0a$^\bigstar$, libvorbis-dev$^\bigstar$
  \item libflac++-dev$^\bigstar$, libflac++6$^\bigstar$
  \item libmad0-dev$^\bigstar$, libmad0$^\bigstar$
 \end{itemize}
-Auf (K,X)Ubuntu kann auch der folgende Befehl auf einem Terminal eingegeben werden:
-\begin{verbatim}
-$ sudo apt-get install build-essential libqt4-core \
- libqt4-gui libqt4-dev libsndfile1 libsndfile1-dev \
- libsamplerate0 libsamplerate0-dev libjack0.100.0-0 \
- libjack0.100.0-dev libasound2 libasound2-dev \
- libwavpack1 libwavpack-dev librdf0 librdf0-dev \
- liblame0 liblame-dev \
- libogg0 libogg-dev libvorbis0a libvorbis-dev \
- libflac++-dev libflac++6 \
- libmad0-dev libmad0 \
- fftw3 fftw3-dev jackd qjackctl gcc g++ make cmake
-\end{verbatim}
 
-Pakete, die mit $^\bigstar$ markiert sind, sind optional, erweitern aber Traverso um die Unterstützung von komprimierten Dateiformaten wie Ogg/Vorbis, MP3, oder FLAC. Falls sie für die jeweilige Plattform verfügbar sind, empfiehlt es sich auf jeden Fall, sie zu installieren. Für einige Pakete sind evtl. die Universe und Multiverse-Repositorien erforderlich. Weitere Informationen dazu findet man auf den (K,X)Ubuntu-Webseiten, Foren und Wikis.
+Pakete, die mit $^\bigstar$ markiert sind, sind optional, erweitern aber Traverso um die Unterstützung von komprimierten Dateiformaten wie Ogg/Vorbis, MP3, oder FLAC. Falls sie für die jeweilige Plattform verfügbar sind, empfiehlt es sich auf jeden Fall, sie zu installieren. 
 
-Falls auf dem gleichen System noch die Qt-Bibliotheken in Version 3 installiert sind, muss eingerichtet werden, dass im folgenden Version 4 verwendet werden soll. Dazu gibt man die folgenden Befehle auf einem Terminal ein, und wählt jeweils die Qt4-Variante aus wenn man gefragt wird:
-
-\begin{verbatim}
-$ sudo update-alternatives --config qmake
-$ sudo update-alternatives --config moc
-$ sudo update-alternatives --config uic
-\end{verbatim}
+Falls auf dem gleichen System noch die Qt-Bibliotheken in Version 3 installiert sind, muss sichergestellt werden, dass für die Kompilation Version 4 verwendet wird. Hilfe dazu findet man in distributionsspezifischen Foren und Wikis.
 
 Nun sollte das System in der Lage sein, Traverso zu kompilieren. Ladet euch dazu das aktuelle Quellcode-Archiv von der Traverso-Webseite, und speichert es in eurem Home-Verzeichnis, z.\,B. in /home/deinName/traversosource/. Entpackt und kompiliert wird es mit folgenden Befehlen:
 
@@ -64,4 +57,4 @@ $ cmake .
 $ make -j 2
 \end{verbatim}
 
-Dies dauert einige Zeit, und falls das System korrekt eingerichtet wurde, sollte die Übersetzung ohne Fehler durchlaufen. Startet Traverso durch die Eingabe von \texttt{bin/traverso}. Falls das Programm nicht startet, überprüft nochmal ob ihr der Anleitung oben exakt gefolgt seid.
+Dies dauert einige Zeit, und falls das System korrekt eingerichtet wurde, sollte die Übersetzung ohne Fehler durchlaufen. Startet Traverso durch die Eingabe von \texttt{bin/traverso}. Falls das Programm nicht startet, überprüft nochmal ob ihr der Anleitung oben exakt gefolgt seid. Falls ihr das Problem nicht alleine beheben könnt, schaut in Kapitel \ref{sect-help} an wen ihr euch wenden könnt, oder fragt im Benutzerforum eurer Distribution nach Hilfe.
