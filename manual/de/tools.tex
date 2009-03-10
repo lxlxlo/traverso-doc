@@ -1,5 +1,5 @@
 \section{Korrelationsgradanzeige}
-Die Korrelationsgradanzeige in Traverso analysiert den linken und rechten Kanal des Masterausgangs, und berechnet deren Korrelationskoeffizienten. Im Gegensatz zu vielen anderen Programmen interpretiert sie den Wert als Ma"s für die Stereobreite des Signals, und stellt den Wert entsprechend dar.
+Die Korrelationsgradanzeige in Traverso analysiert den linken und rechten Kanal des Masterausgangs, und berechnet deren Korrelationskoeffizienten. Im Gegensatz zu vielen anderen Programmen interpretiert sie den Wert als Ma"s für die Stereobreite des Signals und stellt ihn entsprechend dar.
 
 Um zu erklären wozu man die Korrelation überwachen muss nehmen wir an, eine reine Sinuswelle gleicher Frequenz wird sowohl über den rechten als auch über den linken Kanal abgespielt. Werden die beiden Wellen addiert (dies geschieht, wenn das Signal Mono-geschaltet wird, oder wenn sich die Signale in der Luft überlagern), so entsteht ein Summensignal, das je nach Phasenunterschied der beiden Wellen Interferenzerscheinungen aufweist. Das hei"st, wenn zwei positive Werte addiert werden, entsteht ein grö"serer Wert, aber wenn ein positiver und ein negativer Wert summiert werden, entsteht ein Wert mit kleinerem Betrag als die Beträge der Summanden. In einigen Fällen kann dies sogar zu kompletter Auslöschung des Signals führen (\FigB\ \ref{fig_interference}).
 
@@ -28,12 +28,12 @@ Die Korrelationsgradanzeige in Traverso (Menü ,,Ansicht $\rightarrow$ Korrelati
 	\label{fig_cmeter01}
 \end{figure}
 
-Die Korrelationsgradanzeige kann auch dazu verwendet werden, die Balance des Signals zu justieren. Für ein zentriertes Signal, das auf beiden Kanälen etwa gleich laut klingt, sollte die Zenterlinie des Gradientes um die Mittenlinie herumtanzen.
+Die Korrelationsgradanzeige kann auch dazu verwendet werden, die Balance des Signals zu justieren. Für ein zentriertes Signal, das auf beiden Kanälen etwa gleich laut klingt, sollte die Mittellinie des Gradienten um die Mittenmarkierung C herumtanzen.
 
 Da sich der Gradient normalerweise zwischen den beiden Linien L und R befindet, kann man mittels \sact{M} den horizontalen Anzeigebereich verändern. Mehrmaliges drücken von \sact{M} setzt den Wert wieder auf den kompletten Bereich zurück.
 
 \section{FFT-Spektrumsanzeige}
-Eine auf der Fast Fourier Transformation (FFT) basierende Spektrumsanzeige gehört heutzutage zur Standardausrüstung einer digitalen Audioworkstation. Die FFT-Spektrumsanzeige in Traverso wird über das Menü ,,Ansicht $\rightarrow$ FFT-Frequenzspektrum'' aufgerufen. Sie wurde als Dock-Fenster realisiert, das man entweder in das Hauptfenster integrieren oder frei auf dem Bildschirm platzieren kann.
+Eine auf der Fast Fourier Transformation (FFT) basierende Spektrumsanzeige gehört heutzutage zur Standardausrüstung von digitalen Audioworkstations. Die FFT-Spektrumsanzeige in Traverso wird über das Menü ,,Ansicht $\rightarrow$ FFT-Frequenzspektrum'' aufgerufen. Sie wurde als Dock-Fenster realisiert, das man entweder in das Hauptfenster integrieren oder frei auf dem Bildschirm platzieren kann.
 
 Die FFT-Spektrumsanzeige analysiert den Master-Ausgang und zerlegt das Audiosignal in Frequenzbänder. Jedes Band zeigt den höchsten Betrag $dB_{links} + dB_{rechts}$ innerhalb seines Bereichs (\FigB\ \ref{fig_fft1}). Ein Einstellungsdialog kann über den Befehl \sact{E} geöffnet werden, oder über das Kontextmenü \sact{Q}.
 
@@ -48,9 +48,9 @@ Der Konfigurationsdialog (\FigB\ \ref{fig_fft3}) ermöglicht es, den angezeigten
 
 Die Funktion ,,Durchschnittskurve anzeigen'' oder \sact{M} aktiviert eine Kurve, die während des Abspielens die gemessenen Frequenzen summiert und den Durchschnitt berechnet. Wird der Transport gestoppt und wieder gestartet, beginnt die Berechnung von neuem. Die Kurve kann auch durch drücken von \sact{L} zurückgesetzt werden. Sobald Durschnittswerte vorhanden sind, können diese auch exportiert werden. Als Exportformate stehen eine ASCII-Tabelle oder \texttt{grace} zur Verfügung. Letzteres kann mit dem Programm XmGrace geöffnet werden.
 
-FFT-relevante Parameter können im Abschnitt ,,Erweitert'' im Einstellungsdialog geändert werden. Die Grö"se der FFT bestimmt die tiefste Frequenz, die von der Analyse noch erfasst wird. Je grö"ser die FFT, desto tiefer die Frequenz, aber desto höher wird die Speicher- und Prozessorbelastung. Die tiefste Frequenz wird wie folgt berechnet:
+FFT-relevante Parameter können im Einstellungsdialog im Abschnitt ,,Erweitert'' geändert werden. Die Grö"se der FFT bestimmt die tiefste Frequenz, die von der Analyse noch erfasst wird. Je grö"ser die FFT, desto tiefer die Frequenz, aber desto höher wird die Speicher- und Prozessorbelastung. Die tiefste Frequenz wird wie folgt berechnet:
 \[
-f_{min} = \frac{\textrm{Samplerate}}{\textrm{FFT size}}
+f_{min} = \frac{\textrm{Samplerate}}{\textrm{FFT-Grö"se}}
 \]
 Die \emph{tiefste} Frequenz bei einer FFT-Grö"se von 1024 Samples beträgt demnach bei einer Samplerate von 44100~Hz genau 43.1~Hz. Vergrö"sert man die FFT auf 2048 Samples, liegt die tiefste Frequenz bei 21.5~Hz. Die \emph{höchste} gemessene Frequenz berechnet man durch
 \[
@@ -58,7 +58,7 @@ f_{max} = 0.5 \cdot \textrm{Samplerate}
 \]
 Für Audiodaten mit einer Samplerate von 44100~Hz liegt sie daher fest bei 22050~Hz.
 
-Die Fensterungsfunktion kann in diesem Dokument nicht mit einfachen Worten erklärt werden, und es empfiehlt sich in den meisten Fällen, die ,,Hanning''-Funktion zu verwenden.
+Die Erklärung der Fensterungsfunktion würde den Rahmen dieses Dokumentes sprengen. Die meisten Anwender sind mit der ,,Hanning''-Funktion gut beraten.
 
 \begin{figure}
 	\centering
@@ -67,7 +67,7 @@ Die Fensterungsfunktion kann in diesem Dokument nicht mit einfachen Worten erkl�
 	\label{fig_fft3}
 \end{figure}
 
-\emph{Wichtig:} Für sehr grosse FFTs wird die Darstellung des Frequenzspektrums sehr ruckelig. Dies ist nicht unbedingt durch die erhöhte Prozessorbelastung bedingt, sondern durch die Tatsache, dass die FFT-Puffer einige Zeit brauchen, bis sie mit neuen Audiodaten gefüllt sind. In dieser Zeit wird das Spektrum nicht neu gezeichnet.
+\emph{Wichtig:} Für sehr gro"se FFTs wird die Darstellung des Frequenzspektrums sehr ruckelig. Dies ist nicht unbedingt durch die erhöhte Prozessorbelastung bedingt, sondern durch die Tatsache, dass die vergrö"serten FFT-Puffer länger brauchen um mit neuen Audiodaten gefüllt zu werden. In dieser Zeit wird das Spektrum nicht neu gezeichnet.
 
 \section{Externe Bearbeitung}
 Traverso bietet die Möglichkeit, Audioclips extern durch Zusatzprogramme wie ,,sox'' \cite{sox} zu bearbeiten. Dies ermöglicht die Verwendung von zusätzlichen Effekten, was besonders für Samplerate-Konversionen, Entfernung von Gleichspannung, Phaseninvertierung etc. geeignet ist. Auf Linux-Plattformen muss das Programm ,,sox'' installiert werden, das jedoch in allen gängigen Distributionen über das offizielle Repositorium verfügbar ist. Auf Windows und OS X wird das Programm mit Traverso automatisch installiert.
