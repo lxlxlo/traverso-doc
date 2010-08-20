@@ -1,0 +1,36 @@
+﻿\begin{itemize}
+ \item \textit{La reproducción es discontinua y obtengo muchos xruns}\\
+  Si se usa un chip de sonido integrado de Intel, puede convenir ajustar el Número de Periodos a 3 en lugar de 2. Esto se hace en la página ``Driver'' de la ventana de Preferencias, o en la configuración de Jack (usualmente qjackctl).  
+
+ \item \textit{No puedo escuchar el sonido}\\
+  Si la reproducción parece funcionar (los VUmetros muestran señal) pero no puede escuchar sonido, compruebe si el driver activo es el ``Null''. Si es así cargue otro driver, por ej. ALSA en Linux o PortAudio en OS X o Windows, e intente de nuevo. Si está usando el driver Jack, asegúrese de que la salida de Traverso está conectada a una salida de hardware, como se describe en el capítulo \ref{sect_setup}.
+
+ \item \textit{No puedo cargar el driver}\\
+  Puede ser que el tamaño de buffer especificado en los ajustes del driver, sea muy grande para su tarjeta de sonido. Pruebe reduciendo un poco la latencia. También puede ser que el sistema de sonido esté bloqueado por otra aplicación o ``demonio''. Si usa KDE, asegúrese de que aRTs se apague automáticamente tras unos segundos, e intente terminar cualquier otra aplicación que bloquee la tarjeta de sonido.
+
+ \item \textit{El ratón deja de moverse cuando pulso una tecla}\\
+  Para evitar acciones indeseadas, algunos portátiles deshabilitan el touchpad mientras se pulsan teclas. Por supuesto, esto estropea completamente el concepto de selección blanda, pero afortunadamente puede deshabilitarse en la mayoría de los casos. Si está usando Linux, el demonio \texttt{mouseemu} controla esta función. Puede deshabilitar \texttt{mouseemu} ejecutando el comando 
+  \begin{verbatim}
+  sudo /etc/init.d/mouseemu stop
+  \end{verbatim}
+  y comprobar si el problema se resuelve, o bien puede editar el archivo de configuración \texttt{/etc/defaults/mouseemu} y cambiar el valor 300 de la línea \texttt{TYPING\_BLOCK="-typing-block 300"} a 0. Si hay un signo de comentario ``\#'' al principio de la línea, quítelo. Después reinicie \texttt{mouseemu} tecleando
+  \begin{verbatim}
+  sudo /etc/init.d/mouseemu restart
+  \end{verbatim}
+
+ Si está usando OS X, deshabilite la función ``ignorar acciones de touchpad accidentales'' en los ajustes del sistema.
+
+ \item \textit{Traverso no puede poner la tarea de audio en prioridad de tiempo real}\\
+ Algunas distribuciones Linux no permiten ajustar a prioridad de tiempo real las tareas de audio. Pero una prioridad demasiado baja puede producir xruns  e interrupciones durante la reproducción y la grabación. Para evitarlo, añada estas líneas al archivo \texttt{/etc/security/limits.conf}, o si las líneas ya existen, simplemente cambie los números:
+
+\begin{tabular}{llll}
+\texttt{@audio} & \texttt{-} & \texttt{rtprio} & \texttt{90}\\
+\texttt{@audio} & \texttt{-} & \texttt{nice} & \texttt{-10}\\
+\texttt{@audio} & \texttt{-} & \texttt{memlock} & \texttt{3000000}\\
+\end{tabular}
+
+Guarde el fichero y reinicie el ordenador.
+
+\end{itemize}
+
+

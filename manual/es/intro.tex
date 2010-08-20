@@ -1,0 +1,38 @@
+﻿Traverso es un editor y grabador de audio multipista para GNU/Linux que ofrece una interfaz de usuario intuitiva, limpia, y sobre todo eficiente. Actualmente el programa admite grabación en un número ilimitado de pistas (hasta completar la capacidad del hardware disponible), funciones básicas de mezcla, grabación en CD, y exportación del proyecto en varios formatos estándar de audio. El motor de audio realiza todas las operaciones en coma flotante de 32 bits, para conservar la mejor calidad de audio posible, incluso tras ser ampliamente procesado.  
+
+La interfaz de usuario utiliza el concepto de interacción contextual. En lugar de usar el ratón para operar en los objetos gráficos, se usan combinaciones de teclado y ratón para controlar el programa. Esto consigue más flexibilidad y mucha mayor rapidez en el control del programa que el tradicional enfoque basado sólo en el ratón. Va mucho más allá de las posibilidades de las ``combinaciones de teclas'' convencionales. Cuando el ratón se sitúa sobre un objeto, todas las funciones asociadas a ese objeto se vuelven accesibles a través de pulsaciones de teclado. Como el objeto bajo el ratón es seleccionado automáticamente, este enfoque es denominado ``selección blanda''.
+
+\section{Licencia}
+Traverso es software libre. Puede redistribuírlo o modificarlo respetando los términos de la Licencia Pública General de GNU, según es publicada por la Free Software Foundation. Ya sea la versión 2 de la Licencia o (a elección de Ud.) cualquier versión posterior.
+
+Este programa se distribuye con la intención de que sea útil, pero SIN NINGUNA GARANTIA. Ni siquiera la garantía implícita de ADECUACION AL MERCADO o IDONEIDAD PARA UN PROPOSITO PARTICULAR. Vea la Licencia Pública General de GNU para más detalles.
+
+Ud. debiera haber recibido una copia de la Licencia Pública General de GNU junto con este programa. En caso contrario, escriba a la Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+\section{Motivación}
+Una de las motivaciones al presentar el concepto de selección blanda, fue nuestro convencimiento acerca de su superioridad en eficiencia, rapidez y ergonomía, comparado con el concepto tradicional de ``apuntar y pinchar'' con el ratón. Para apreciar todo el potencial de la selección blanda es necesaria una fase inicial de aprendizaje, porque el adoptar algo que rompe con los estándares anteriores requiere tiempo y motivación, y el sustituir hábitos largamente practicados requiere más tiempo aún. Ilustremos los diferentes estilos de trabajo usando un ejemplo trivial. Supongamos que queremos cambiar el estado de ``Solo'' o ``Mudo'' de una pista.
+
+\minisec{``La manera analógica''}
+En un estudio de grabación analógico, con una mesa de mezclas, tenemos muchos canales, cada uno con muchos botones, faders, etc. Para cambiar el estado de ``Solo'' o ``Mudo'', buscamos la pista deseada, y presionamos el botón correspondiente. Si queremos hacer lo mismo con varios canales, pulsaremos rápidamente varios botones, que estarán en fila. El hecho de que haya un botón para cada función (que no siempre es fácil de encontrar, dependiendo del tamaño de la mesa), hace fácil pulsar el botón, pero hace que las mesas de mezcla sean aparatos grandes y complicados.
+
+\minisec{``La manera digital''}
+En una estación de audio digital (DAW) convencional, identificamos el canal y presionamos el botón (solo o mudo) correspondiente con el ratón. Dependiendo de la habilidad del usuario y del tamaño del botón y de la pantalla, esto puede ser fácil. Cambiar el estado de varios canales es, sin embargo, muy lento e ineficiente, porque pulsar el botón requiere apuntar bien con el ratón cada vez.
+
+\minisec{``La manera de Traverso'': Selección blanda}
+El uso de dispositivos de entrada adicionales, con botones y faders reales, para controlar la DAW, combina las ventajas de los sistemas analógicos y digitales. Con su concepto de ``selección blanda'', Traverso sigue un enfoque parecido, pero sin la necesidad de hardware específico.
+
+En traverso, se pone el ratón sobre la pista que se quiere procesar, y se pulsa una tecla del teclado. ``U'' para mudo, u ``O'' para solo. Muchos usuarios pulsan la tecla sin mirar al teclado. El panel de la pista es un área grande, toda ella sensible a las acciones de teclado. Por tanto, aunque haya que cambiar varias pistas, como el ratón puede situarse en cualquier parte de la pista, es mucho más fácil apuntar bien.
+
+Entonces ¿cuál es la diferencia entre la manera digital y la de Traverso? Según nuestra experiencia, mover el ratón sobre la mesa para desplazar el cursor en la pantalla es como usar un control remoto. Si el cursor está o no sobre un elemento de control, sólo puede saberse visualmente. Pulsar botones con los dedos, uno para solo, otro para mudo, etc., es más ergonómico e intuitivo. En Traverso hemos tratado de implementar un concepto de interfaz que proporcione una sensación tan directa como los botones analógicos, pero sin necesitar hardware de control adicional. Una vez que hemos identificado la pista que queremos procesar (colocando el cursor del ratón sobre ella), queremos un botón real para tantas funciones como sea posible. Y como nuestra mano izquierda puede estar preparada para pulsar botones en lugar de para hurgarnos en la nariz, tenemos los 104 botones del teclado a nuestra disposición. Esto puede proporcionar acceso directo a muchas funciones. Este concepto está relacionado estrechamente con los juegos de acción (``de disparar tiros''), que están muy optimizados para realizar fácilmente una variedad de acciones (moverse, correr, disparar, esconderse, \dots) y acceder a una variedad de herramientas. Para resumir, las ventajas de la selección blanda son:
+
+\begin{itemize}
+ \item las distancias en el teclado son menores que en la pantalla
+ \item la relación aciertos/fallos para pulsación de teclas es mucho mayor que para botones de pantalla
+ \item usar las dos manos permite trabajar más rápido y libera la mano del ratón, que se cansa menos
+ \item la sensación de ``control remoto'' se reduce
+ \item más acciones se realizan directamente, lo que permite menús menos complicados y detallados
+ \item las teclas pueden encontrarse sin mirar, distrayéndonos menos del trabajo que estamos haciendo
+\end{itemize}
+
+La parte mala es que requiere un aprendizaje, sobre todo en los primeros momentos, ya que las teclas no están marcadas con el nombre de la función (``Solo'', ``Mudo'', ``Rec'' etc.). Pero uno se acostumbra pronto a éstos comandos, como ocurrió con ``Ctrl+C'' para copiar y ``Ctrl+V'' para pegar.
+

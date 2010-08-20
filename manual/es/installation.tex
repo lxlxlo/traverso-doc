@@ -1,0 +1,59 @@
+﻿La mejor manera de instalar Traverso es usando alguno de los instaladores disponibles. Muchas de las distribuciones Linux más populares tienen paquetes binarios para las versiones estables de Traverso. Pero en la vorágine del software libre, las cosas pueden cambiar muy rápido. Por eso se recomienda visitar la página de Traverso \cite{trav-hp} para encontrar información actualizada sobre paquetes binarios. Si no hay paquetes binarios disponibles, Traverso puede compilarse desde el código fuente. Las dependencias forman parte de la mayoría de las distribuciones Linux, lo que hace que la compilación sea relativamente sencilla. Traverso se compila correctamente y corre sobre las plataformas i386, ia64, y ppc.
+
+\section{Binarios}
+Los ficheros binarios precompilados pueden obtenerse de los siguientes lugares:
+
+\begin{description}
+	\item [Mandriva:] Traverso es parte de la distribución oficial.
+	\item [(K,X)Ubuntu:] Traverso es parte de la distribución oficial.
+	\item [Debian:] Traverso es parte de la distribución oficial.
+	\item [Gentoo:] Traverso es parte de la distribución oficial. Las versiones nuevas de Traverso aparecen antes en la sección Pro-Audio. Encontrará más información en \cite{pro-audio-wiki}.
+	\item [OpenSuse:] Los paquetes están disponibles en \cite{suse-ref}.
+	\item [Windows:] Encontrará un instalador binario en la página de Traverso \cite{trav-hp}.
+	\item [Apple OS X:] hay imágenes de disco disponibles para plataformas i386 y ppc en la página de Traverso \cite{trav-hp}.
+\end{description}
+
+\section{Compilar el código fuente}
+En esta sección se describe cómo compilar el código fuente de Traverso bajo Linux. Los nombres de los paquetes pueden variar un poco dependiendo de la distribución, pero no será difícil identificar el paquete correcto usando el gestor de paquetes de su distribución. Nótese que Traverso depende de la librería Qt, versión 4.3.1 o posterior.
+
+Si nunca ha compilado software basado en las librerías Qt, debe comenzar instalando un entorno de desarrollo C++ y Qt. Algunas distribuciones proporcionan los llamados meta-paquetes, que instalan todos los paquetes necesarios para una tarea particular. Por ej., al poner el gestor de paquetes de Mandriva 2009.0 en modo ``Meta Packages'' e instalar el paquete ``task-kde4-devel'' de la categoría ``Development $\rightarrow$ KDE and Qt development'', se instala un entorno de desarrollo con un esfuerzo mínimo. Si su distribución no proporciona un meta-paquete de desarrollo Qt, debe instalar al menos los siguientes paquetes individuales y todas las dependencias que requieran:
+
+\begin{itemize}
+	\item gcc
+	\item g++
+	\item make
+	\item cmake
+	\item libqt4-core, libqt4-gui, libqt4-dev
+\end{itemize}
+
+Después deberá instalar algunas librerías y paquetes de desarrollo requeridos por Traverso:
+
+\begin{itemize}
+	\item libsndfile1, libsndfile1-dev
+	\item libsamplerate0, libsamplerate0-dev
+	\item libasound2, libasound2-dev
+	\item fftw3, fftw3-dev
+	\item librdf0/libredland0, librdf0-dev/libredland-dev
+	\item libwavpack1, libwavpack-dev
+	\item libjack0.100.0-0$^\bigstar$, libjack0.100.0-dev$^\bigstar$, jackd$^\bigstar$, qjackctl$^\bigstar$
+	\item liblame0$^\bigstar$, liblame-dev$^\bigstar$
+	\item libogg0$^\bigstar$, libogg-dev$^\bigstar$, libvorbis0a$^\bigstar$, libvorbis-dev$^\bigstar$
+	\item libflac++-dev$^\bigstar$, libflac++6$^\bigstar$
+	\item libmad0-dev$^\bigstar$, libmad0$^\bigstar$.
+\end{itemize}
+
+Los paquetes marcados con $^\bigstar$ son opcionales, pero proporcionan funcionalidad para formatos comprimidos como Ogg/Vorbis, MP3, o FLAC. Si los encuentra disponibles, se recomienda que también los instale.
+
+Si está instalada la versión 3 de los paquetes de desarrollo Qt, debe asegurarse de que se usan las herramientas de la versión 4. Si desconoce cómo conseguir ésto, busque ayuda en algún foro específico de la distribución, ya que la respuesta depende de la distribución.
+
+Con lo anterior, ¡su sistema está preparado para compilar Traverso! Descargue el archivo con el código fuente de la última versión estable desde \cite{trav-hp} y guárdelo en su directorio de usuario. Extráigalo y compílelo con los comandos siguientes:
+
+\begin{verbatim}
+$ tar -zxvf traverso-x.x.x.tar.gz
+$ cd traverso-x.x.x
+$ cmake .
+$ make -j 2
+\end{verbatim}
+
+El proceso llevará cierto tiempo. Si ha seguido las instrucciones cuidadosamente, debiera completarse sin errores. Cuando el comando \texttt{make} termina, se le devuelve a Ud. el control de la línea de comandos. Lance Traverso tecleando \texttt{bin/traverso}. Si no funciona, la compilación ha fallado. Compruebe de nuevo que ha seguido todas las instrucciones anteriores correctamente. Si no encuentra la solución, consulte el capítulo \ref{sect_help} para más información sobre cómo obtener ayuda, o pregunte en el foro de usuarios de su distribución.
+
